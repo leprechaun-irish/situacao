@@ -19,11 +19,11 @@ public class ControlIngresso {
         this.conn = new ConnectionFactory().getConnection();
     }
 
-    public void cadastraIngresso(ModelCliente cliente, ModelLugar lugar) throws SQLException {
+    public void cadastraIngresso(ModelIngresso ingresso) throws SQLException {
         String sql = "INSERT INTO INGRESSO(ING_CLIENTE, ING_LUGAR) VALUES(?,?)";
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, cliente.getIdCliente());
-        stmt.setInt(2, lugar.getIdLugar());
+        stmt.setInt(1, ingresso.getCliente().getIdCliente());
+        stmt.setInt(2, ingresso.getLugar().getIdLugar());
         stmt.execute();
     }
 

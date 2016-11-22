@@ -23,21 +23,6 @@
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ex: bolsonaro2018@gmail.com">
                 </div>
-                <fieldset class="form-group">
-                    <legend>Dia de jogo</legend>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                            Primeiro jogo
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                            Segundo jogo
-                        </label>
-                    </div>
-                </fieldset>
                 <div class="form-group">
                     <label for="exampleSelect1">Setor do jogo</label>
                     <select class="form-control" id="exampleSelect1">

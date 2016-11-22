@@ -19,12 +19,12 @@ public class ControlLugar {
     this.conn = new ConnectionFactory().getConnection();
     }
     
-    public void cadastraLugar(int cadeira, ModelFileira fileira, ModelDia dia) throws SQLException{
+    public void cadastraLugar(ModelLugar lugar) throws SQLException{
         String sql = "INSERT INTO LUGAR(LUG_CADEIRA, LUG_FILEIRA, LUG_DIA) VALUES(?,?,?)";
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, cadeira);
-        stmt.setInt(2, fileira.getIdFileira());
-        stmt.setInt(3, dia.getIdDia());
+        stmt.setInt(1, lugar.getCadeira());
+        stmt.setInt(2, lugar.getFileira().getIdFileira());
+        stmt.setInt(3, lugar.getDia().getIdDia());
         stmt.execute();
     }
     
