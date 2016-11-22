@@ -1,6 +1,6 @@
 package br.com.leprechaun.servlet;
 
-import br.com.leprechaun.controller.ControlEmail;
+import br.com.leprechaun.dao.ControlEmail;
 import java.io.IOException;
 import java.util.Random;
 import javax.servlet.ServletException;

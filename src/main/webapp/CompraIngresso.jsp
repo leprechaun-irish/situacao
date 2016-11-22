@@ -9,6 +9,8 @@
         <link rel="icon" type="image/png" sizes="96x96" href="imagens/favicon-96x96.png">
     </head>
     <body>
+        <c:import url="cabecalho.jsp"/>
+        
         <form method="post" action="CompraIngresso">
             Cadeira <input type="text" name="cadeira"/> <br>
             Fileira <input type="text" name="fileira"/> <br>
@@ -18,5 +20,7 @@
             Setor <input type="text" name="setor"/> <br>
             <input type="submit" value="Comprar"/>
         </form>
+        
+        <c:import url="rodape.jsp"/>
     </body>
 </html>
