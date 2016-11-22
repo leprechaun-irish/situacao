@@ -8,38 +8,63 @@
         <link rel="icon" type="image/png" sizes="96x96" href="imagens/favicon-96x96.png">
     </head>
     <body>
+        <jsp:useBean id="daoDia" class="br.com.leprechaun.dao.ControlDia"/>
+        <jsp:useBean id="daoSetor" class="br.com.leprechaun.dao.ControlSetor"/>
+        <jsp:useBean id="daoFileira" class="br.com.leprechaun.dao.ControlFileira"/>
+
         <c:import url="cabecalho.jsp"/>
+
 
         <div class="parallax-window" data-parallax="scroll" data-image-src="imagens/Codigo.PNG" style="min-height: 300px" ></div>
 
-        <div class="container" style="padding: 50px">
-            <h4>Compre agora seu ingresso!</h4>
-            <form>
-                <div class="form-group">
+        <div class="row" style="padding: 50px">
+            <form class="offset-md-1">
+                <h4>Compre agora seu ingresso!</h4>
+                <div class="form-group col-md-11">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Ex: Jair Bolsonaro">
+                    <input name="nome" type="text" class="form-control" placeholder="Ex: Jair Bolsonaro">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-11">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ex: bolsonaro2018@gmail.com">
+                    <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Ex: bolsonaro2018@gmail.com">
                 </div>
-                <div class="form-group">
-                    <label for="exampleSelect1">Setor do jogo</label>
-                    <select class="form-control" id="exampleSelect1">
-                        <option>Setor</option>
-                        <option>Amarelo</option>
-                        <option>Azul</option>
-                        <option>Branco</option>
-                        <option>Verde</option>
+                <div class="form-group col-md-2">
+                    <label for="dia">Dia</label>
+                    <select class="form-control" name="dia">
+                        <c:forEach var="dia" items="${daoDia.dia}">
+                            <option>${dia.idDia}</option>
+                        </c:forEach>
                     </select>
                 </div>
-                <div class="form-check">
+                <div class="form-group col-md-2">
+                    <label for="setor">Setor</label>
+                    <select class="form-control" name="setor">
+                        <c:forEach var="setor" items="${daoSetor.setor}">
+                            <option>${setor.descricao}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="fileira">Fileira</label>
+                    <select class="form-control" name="fileira">
+                        <c:forEach var="fileira" items="${daoFileira.fileira}">
+                            <option>${fileira.idFileira}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="cadeira">Cadeira</label>
+                    <input name="cadeira" type="number" class="form-control" placeholder="Ex: 18">
+                </div>
+                <div class="form-check col-md-11">
                     <label class="form-check-label">
                         <input type="checkbox" class="form-check-input">
                         Vou votar no bolsonaro.
                     </label>
                 </div>
-                <button type="submit" class="btn btn-outline-success">Comprar</button>
+                <div class="form-group col-md-11">
+                    <button type="submit" class="btn btn-outline-success">Comprar</button>
+                </div>
             </form>
         </div>
 

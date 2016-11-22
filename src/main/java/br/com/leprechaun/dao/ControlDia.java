@@ -26,7 +26,7 @@ public class ControlDia {
     
     public List<ModelDia> getDia() throws SQLException{
         List<ModelDia> listDia = new ArrayList<>();
-        String sql = "";
+        String sql = "SELECT * FROM DIA";
         PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
         while(rs.next()){
