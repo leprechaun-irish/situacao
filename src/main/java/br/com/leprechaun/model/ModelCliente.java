@@ -1,10 +1,9 @@
-
 package br.com.leprechaun.model;
 
 public class ModelCliente {
-
-    String nomeCliente, emailCliente;
-    int idCliente;
+    private int idCliente;
+    private String nome;
+    private String email;
 
     public int getIdCliente() {
         return idCliente;
@@ -14,20 +13,19 @@ public class ModelCliente {
         this.idCliente = idCliente;
     }
 
-    public String getNomeCliente() {
-        return nomeCliente;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getEmailCliente() {
-        return emailCliente;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailCliente(String emailCliente) {
-        this.emailCliente = emailCliente;
+    public void setEmail(String email) {
+        this.email = email;
     }
-    
 }

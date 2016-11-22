@@ -1,4 +1,4 @@
-package br.com.leprechaun.controller;
+package br.com.leprechaun.dao;
 
 import java.util.Properties;
 import javax.mail.Authenticator;
