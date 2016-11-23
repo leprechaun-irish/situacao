@@ -4,7 +4,6 @@ import br.com.leprechaun.dao.*;
 import br.com.leprechaun.model.*;
 import java.io.IOException;
 import java.sql.SQLException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,12 +21,11 @@ public class ServletCompra extends HttpServlet {
 
             String nome = request.getParameter("nome");
             String email = request.getParameter("email");
-            String diaString = request.getParameter("dia");
-            String setor = request.getParameter("setor");
+            int dia = Integer.parseInt(request.getParameter("dia"));
+            int setor = Integer.parseInt(request.getParameter("setor"));
             int fileira = Integer.parseInt(request.getParameter("fileira"));
             int cadeira = Integer.parseInt(request.getParameter("cadeira"));
             String acao = request.getParameter("acao");
-            int dia = Integer.parseInt(diaString);
             
             /*if (acao.equals("selecionaDia")) {
             ControlSD ctrlSD = new ControlSD();
@@ -41,42 +39,37 @@ public class ServletCompra extends HttpServlet {
             
             }*/
 //----------------Instanciando Model--------------------------------------------
+           
             ModelCliente modelCliente = new ModelCliente();
             ModelDia modelDia = new ModelDia();
             ModelSetor modelSetor = new ModelSetor();
             ModelFileira modelFileira = new ModelFileira();
             ModelIngresso modelIngresso = new ModelIngresso();
             ModelLugar modelLugar = new ModelLugar();
-            ModelSD sd = new ModelSD();
-            
+
 //----------------Atribuindo valores--------------------------------------------
             modelCliente.setNome(nome);
             modelCliente.setEmail(email);
             modelDia.setIdDia(dia);
-            modelSetor.setDescricao(setor);
+            modelSetor.setIdSetor(setor);
             modelFileira.setIdFileira(fileira);
             modelLugar.setCadeira(cadeira);
+
             modelLugar.setDia(modelDia);
             modelLugar.setFileira(modelFileira);
             modelIngresso.setCliente(modelCliente);
             modelIngresso.setLugar(modelLugar);
-            
+
 //----------------Instanciando Control------------------------------------------
-            ControlCliente  ctrlCliente = new ControlCliente();
-            ControlDia      ctrlDia = new ControlDia();
-            ControlSetor    ctrlSetor = new ControlSetor();
-            ControlFileira  ctrlFileira = new ControlFileira();
+            ControlCliente ctrlCliente = new ControlCliente();
             ControlIngresso ctrlIngresso = new ControlIngresso();
-            ControlLugar    ctrlLugar = new ControlLugar();
-            
+            ControlLugar ctrlLugar = new ControlLugar();
+
 //----------------Atribuindo Valor---------------------------------------------------------
             ctrlCliente.cadastraCliente(modelCliente);
-            ctrlDia.cadastraDia(modelDia);
-            ctrlSetor.cadastraSetor(modelSetor);
-            ctrlFileira.cadastraFileira(modelFileira);
-            ctrlIngresso.cadastraIngresso(modelIngresso);
             ctrlLugar.cadastraLugar(modelLugar);
-
+            ctrlIngresso.cadastraIngresso(modelIngresso);
+            
         } catch (SQLException ex) {
             System.err.println("Erro no servlet/banco de dados!\n" + ex);
         }
