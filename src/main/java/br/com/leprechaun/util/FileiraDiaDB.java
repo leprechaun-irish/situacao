@@ -22,27 +22,60 @@ public class FileiraDiaDB {
             stmt.execute();
         }
         
-        String sql = "INSERT INTO SETOR(SET_DESCRICAO, SET_DIA, SET_PRECO) VALUES(?,?,?)";
+        String sql = "INSERT INTO SETOR(SET_DESCRICAO) VALUES(?)";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, "Amarelo");
-        stmt.setInt(2, 1);
-        stmt.setDouble(3, 25);
         stmt.execute();
         
         stmt.setString(1, "Azul");
+        stmt.execute();
+        
+        stmt.setString(1, "Verde");
+        stmt.execute();
+        
+        stmt.setString(1, "Branco");
+        stmt.execute();
+        
+        sql = "INSERT INTO SETOR_DIA(SD_SETOR, SD_DIA, SD_PRECO) VALUES(?,?,?)";
+        stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, 1);
         stmt.setInt(2, 1);
         stmt.setDouble(3, 25);
         stmt.execute();
         
-        stmt.setString(1, "Verde");
+        stmt.setInt(1, 1);
+        stmt.setInt(2, 2);
+        stmt.setDouble(3, 50);
+        stmt.execute();
+        
+        stmt.setInt(1, 2);
+        stmt.setInt(2, 1);
+        stmt.setDouble(3, 25);
+        stmt.execute();
+        
+        stmt.setInt(1, 2);
+        stmt.setInt(2, 2);
+        stmt.setDouble(3, 50);
+        stmt.execute();
+        
+        stmt.setInt(1, 3);
         stmt.setInt(2, 1);
         stmt.setDouble(3, 50);
         stmt.execute();
         
-        stmt.setString(1, "Branco");
+        stmt.setInt(1, 3);
+        stmt.setInt(2, 2);
+        stmt.setDouble(3, 100);
+        stmt.execute();
+        
+        stmt.setInt(1, 4);
         stmt.setInt(2, 1);
         stmt.setDouble(3, 50);
         stmt.execute();
-
+        
+        stmt.setInt(1, 4);
+        stmt.setInt(2, 2);
+        stmt.setDouble(3, 100);
+        stmt.execute();
     }
 }
