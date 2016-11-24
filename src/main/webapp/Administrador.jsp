@@ -15,7 +15,7 @@
             <!--Form para cadastrar Setor -->
             <tr>
                 <td>
-                    <form name="formSetor" action="ServletAdministrador" method="post>
+                    <form name="formSetor" action="ServletAdministrador" method="post">
                         <label for="descricao">Cadastrar novo Setor: </label>
                         <input type="text" id="descricao" name="descricaoSetor" placeholder="Ex: Vermelho"/>
                         <input type="hidden" id="acao" name="acao" value="CadastraSetor"/>
@@ -30,7 +30,7 @@
             <!--Form para cadastrar Dia -->
             <tr>
                 <td>
-                    <form name="formDia" action="ServletAdministrador" method="post>
+                    <form name="formDia" action="ServletAdministrador" method="post">
                         <label for="novoDia">Cadastrar novo Dia: </label>
                         <input type="number" id="novoDia" name="novoDia" placeholder="Ex: 5"/>
                         <input type="hidden" id="acao" name="acao" value="CadastraDia"/>
