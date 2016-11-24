@@ -6,6 +6,15 @@ public class ModelLugar {
     private int cadeira;
     private ModelFileira fileira;
     private ModelDia dia;
+    private ModelSetor setor;
+
+    public ModelSetor getSetor() {
+        return setor;
+    }
+
+    public void setSetor(ModelSetor setor) {
+        this.setor = setor;
+    }
 
     public int getIdLugar() {
         return idLugar;

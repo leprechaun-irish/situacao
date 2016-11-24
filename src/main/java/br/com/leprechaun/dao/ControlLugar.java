@@ -20,11 +20,12 @@ public class ControlLugar {
     }
     
     public void cadastraLugar(ModelLugar lugar) throws SQLException{
-        String sql = "INSERT INTO LUGAR(LUG_CADEIRA, LUG_FILEIRA, LUG_DIA) VALUES(?,?,?)";
+        String sql = "INSERT INTO LUGAR(LUG_CADEIRA, LUG_FILEIRA, LUG_DIA,LUG_SETOR) VALUES(?,?,?,?)";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, lugar.getCadeira());
         stmt.setInt(2, lugar.getFileira().getIdFileira());
         stmt.setInt(3, lugar.getDia().getIdDia());
+        stmt.setInt(4, lugar.getSetor().getIdSetor());
         stmt.execute();
     }
     

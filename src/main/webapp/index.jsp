@@ -22,6 +22,7 @@
                 <h4>Compre agora seu ingresso!</h4>
                 
                 <input type="hidden" value="" name="acao" id="acao">
+                
                 <div class="form-group col-md-11">
                     <label for="nome">Nome</label>
                     <input name="nome" type="text" class="form-control" placeholder="Ex: Jair Bolsonaro">
@@ -30,9 +31,11 @@
                     <label for="email">Email</label>
                     <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Ex: bolsonaro2018@gmail.com">
                 </div>
+                
                 <div class="form-group col-md-2">
                     <label for="dia">Dia</label>
-                    <select class="form-control" name="dia" onchange="document.getElementById('acao').value='selecionaDia'; this.form.submit()">
+                    <select class="form-control" name="dia"
+                            onchange="document.getElementById('acao').value='selecionaDia'; this.form.submit()">
                         <option>Dia</option>
                         <c:forEach var="dia" items="${daoDia.dia}">
                             <option>${dia.idDia}</option>
@@ -44,12 +47,12 @@
                     <label for="setor">Setor</label>
                     <select class="form-control" name="setor">
                         <option>Setor</option>
-                        <c:forEach var="sd" items="${list}">
-                            <option><c:out value="${sd.setor.descricao}"/></option>
-                            
+                        <c:forEach var="setor" items="${daoSetor.setor}">
+                            <option value="${setor.idSetor}">${setor.descricao}</option>
                         </c:forEach>
                     </select>
                 </div>
+                
                 <div class="form-group col-md-2">
                     <label for="fileira">Fileira</label>
                     <select class="form-control" name="fileira">
@@ -59,6 +62,7 @@
                         </c:forEach>
                     </select>
                 </div>
+                
                 <div class="form-group col-md-2">
                     <label for="cadeira">Cadeira</label>
                     <input name="cadeira" type="number" class="form-control" placeholder="Ex: 18">
