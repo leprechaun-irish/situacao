@@ -16,18 +16,18 @@ public class ServletCompra extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            response.setContentType("text/html;charset=UTF-8");
 
-            String nome = request.getParameter("nome");
-            String email = request.getParameter("email");
-            int dia = Integer.parseInt(request.getParameter("dia"));
-            int setor = Integer.parseInt(request.getParameter("setor"));
-            int fileira = Integer.parseInt(request.getParameter("fileira"));
-            int cadeira = Integer.parseInt(request.getParameter("cadeira"));
-            String acao = request.getParameter("acao");
-            
-            /*if (acao.equals("selecionaDia")) {
+        response.setContentType("text/html;charset=UTF-8");
+
+        String nome = request.getParameter("nome");
+        String email = request.getParameter("email");
+        int dia = Integer.parseInt(request.getParameter("dia"));
+        int setor = Integer.parseInt(request.getParameter("setor"));
+        int fileira = Integer.parseInt(request.getParameter("fileira"));
+        int cadeira = Integer.parseInt(request.getParameter("cadeira"));
+        String acao = request.getParameter("acao");
+
+        /*if (acao.equals("selecionaDia")) {
             ControlSD ctrlSD = new ControlSD();
             
             ctrlSD.consulta(dia);
@@ -38,40 +38,37 @@ public class ServletCompra extends HttpServlet {
             rd.forward(request, response);
             
             }*/
+//----------------Instanciando Control------------------------------------------
+        ControlCliente ctrlCliente = new ControlCliente();
+        ControlLugar ctrlLugar = new ControlLugar();
+        ControlIngresso ctrlIngresso = new ControlIngresso();
+
 //----------------Instanciando Model--------------------------------------------
-           
-            ModelCliente modelCliente = new ModelCliente();
-            ModelDia modelDia = new ModelDia();
-            ModelSetor modelSetor = new ModelSetor();
-            ModelFileira modelFileira = new ModelFileira();
-            ModelIngresso modelIngresso = new ModelIngresso();
-            ModelLugar modelLugar = new ModelLugar();
+        ModelCliente modelCliente = new ModelCliente();
+        ModelDia modelDia = new ModelDia();
+        ModelSetor modelSetor = new ModelSetor();
+        ModelFileira modelFileira = new ModelFileira();
+        ModelIngresso modelIngresso = new ModelIngresso();
+        ModelLugar modelLugar = new ModelLugar();
 
 //----------------Atribuindo valores--------------------------------------------
-            modelCliente.setNome(nome);
-            modelCliente.setEmail(email);
-            modelDia.setIdDia(dia);
-            modelSetor.setIdSetor(setor);
-            modelFileira.setIdFileira(fileira);
-            modelLugar.setCadeira(cadeira);
+        modelCliente.setNome(nome);
+        modelCliente.setEmail(email);
+        ctrlCliente.cadastraCliente(modelCliente);
+        
+        modelDia.setIdDia(dia);
+        modelSetor.setIdSetor(setor);
+        modelFileira.setIdFileira(fileira);
+        modelLugar.setCadeira(cadeira);
 
-            modelLugar.setDia(modelDia);
-            modelLugar.setFileira(modelFileira);
-            modelIngresso.setCliente(modelCliente);
-            modelIngresso.setLugar(modelLugar);
-
-//----------------Instanciando Control------------------------------------------
-            ControlCliente ctrlCliente = new ControlCliente();
-            ControlIngresso ctrlIngresso = new ControlIngresso();
-            ControlLugar ctrlLugar = new ControlLugar();
-
-//----------------Atribuindo Valor---------------------------------------------------------
-            ctrlCliente.cadastraCliente(modelCliente);
-            ctrlLugar.cadastraLugar(modelLugar);
-            ctrlIngresso.cadastraIngresso(modelIngresso);
-            
-        } catch (SQLException ex) {
-            System.err.println("Erro no servlet/banco de dados!\n" + ex);
-        }
+        modelLugar.setDia(modelDia);
+        modelLugar.setFileira(modelFileira);
+        modelLugar.setSetor(modelSetor);
+        ctrlLugar.cadastraLugar(modelLugar);
+        
+        modelIngresso.setCliente(modelCliente);
+        modelIngresso.setLugar(modelLugar);
+        ctrlIngresso.cadastraIngresso(modelIngresso);
     }
 }
+

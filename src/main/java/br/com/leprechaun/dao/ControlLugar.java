@@ -19,14 +19,19 @@ public class ControlLugar {
     this.conn = new ConnectionFactory().getConnection();
     }
     
-    public void cadastraLugar(ModelLugar lugar) throws SQLException{
-        String sql = "INSERT INTO LUGAR(LUG_CADEIRA, LUG_FILEIRA, LUG_DIA,LUG_SETOR) VALUES(?,?,?,?)";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, lugar.getCadeira());
-        stmt.setInt(2, lugar.getFileira().getIdFileira());
-        stmt.setInt(3, lugar.getDia().getIdDia());
-        stmt.setInt(4, lugar.getSetor().getIdSetor());
-        stmt.execute();
+    public void cadastraLugar(ModelLugar lugar){
+        try {
+            String sql = "INSERT INTO LUGAR(LUG_ID, LUG_CADEIRA, LUG_FILEIRA, LUG_DIA, LUG_SETOR) VALUES(?,?,?,?,?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, lugar.getIdLugar());
+            stmt.setInt(2, lugar.getCadeira());
+            stmt.setInt(3, lugar.getFileira().getIdFileira());
+            stmt.setInt(4, lugar.getDia().getIdDia());
+            stmt.setInt(5, lugar.getSetor().getIdSetor());
+            stmt.execute();
+        } catch (SQLException ex) {
+            System.out.println("Erro ao cadastrar lugar \n" + ex);
+        }
     }
     
     public List<ModelLugar> getLugar() throws SQLException{
@@ -45,5 +50,20 @@ public class ControlLugar {
             listLugar.add(lugar);
         }
         return listLugar;
+    }
+    public int recuperaIdLugar(){
+        try {
+            String sql = "SELECT LUG_ID FROM LUGAR ORDER BY LUG_ID DESC LIMIT 1";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            int idLugar=0;
+            while(rs.next()){
+                idLugar = rs.getInt("LUG_ID");
+            }
+            return idLugar+1;
+        } catch (SQLException ex) {
+            System.err.println("Erro ao recuperar id do lugar!\n"+ex);
+            return 1;
+        }
     }
 }

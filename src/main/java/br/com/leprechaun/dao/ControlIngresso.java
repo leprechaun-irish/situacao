@@ -19,12 +19,17 @@ public class ControlIngresso {
         this.conn = new ConnectionFactory().getConnection();
     }
 
-    public void cadastraIngresso(ModelIngresso ingresso) throws SQLException {
+    public void cadastraIngresso(ModelIngresso ingresso) {
         String sql = "INSERT INTO INGRESSO(ING_CLIENTE, ING_LUGAR) VALUES(?,?)";
+        try{
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, ingresso.getCliente().getIdCliente());
         stmt.setInt(2, ingresso.getLugar().getIdLugar());
         stmt.execute();
+        System.out.println("Final Cadastra ingresso");
+        }catch(SQLException e){
+            System.out.println("Erro ao cadastrar ingresso \n" + e);
+        }
     }
 
     public List<ModelIngresso> getIngresso() throws SQLException {

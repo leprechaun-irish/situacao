@@ -17,17 +17,22 @@ public class ControlCliente {
     this.conn = new ConnectionFactory().getConnection();
     }
     
-    public void cadastraCliente(ModelCliente cliente) throws SQLException{
-        String sql = "INSERT INTO CLIENTE(CLI_NOME, CLI_EMAIL) VALUES(?,?)";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, cliente.getNome());
-        stmt.setString(2, cliente.getEmail());
-        stmt.execute();
+    public void cadastraCliente(ModelCliente cliente){
+        try {
+            String sql = "INSERT INTO CLIENTE(CLI_ID, CLI_NOME, CLI_EMAIL) VALUES(?,?,?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, cliente.getIdCliente());
+            stmt.setString(2, cliente.getNome());
+            stmt.setString(3, cliente.getEmail());
+            stmt.execute();
+        } catch (SQLException ex) {
+            System.out.println("Erro ao cadastrar cliente." + ex);
+        }
     }
     
     public List<ModelCliente> getCliente() throws SQLException{
         List<ModelCliente> listCliente = new ArrayList<>();
-        String sql = "";
+        String sql = "SELECT * FROM CLIENTE";
         PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
         while(rs.next()){
@@ -38,5 +43,21 @@ public class ControlCliente {
             listCliente.add(cliente);
         }
         return listCliente;
+    }
+    
+    public int recuperaIdCliente(){
+        try {
+            String sql = "SELECT CLI_ID FROM CLIENTE ORDER BY CLI_ID DESC LIMIT 1";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            int idCliente=0;
+            while(rs.next()){
+                idCliente = rs.getInt("CLI_ID");
+            }
+            return idCliente+1;
+        } catch (SQLException ex) {
+            System.err.println("Erro ao recuperar id do cliente!\n"+ex);
+            return 1;
+        }
     }
 }
