@@ -1,3 +1,5 @@
+<!-- SUJEITO A DIREITOS AUTORAIS -->
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -19,6 +21,7 @@
         <jsp:useBean id="daoSetor" class="br.com.leprechaun.dao.ControlSetor"/>
         <jsp:useBean id="daoFileira" class="br.com.leprechaun.dao.ControlFileira"/>
         <jsp:useBean id="daoSD" class="br.com.leprechaun.dao.ControlSD"/>
+        <jsp:useBean id="daoCadeira" class="br.com.leprechaun.dao.ControlCadeira"/>
         <jsp:useBean id="modelDia" class="br.com.leprechaun.model.ModelDia"/>
 
         <c:import url="cabecalho.jsp"/>
@@ -75,8 +78,14 @@
 
                 <div class="form-group col-md-2">
                     <label for="cadeira">Cadeira</label>
-                    <input name="cadeira" type="number" class="form-control" placeholder="Ex: 18">
+                    <select class="form-control" name="cadeira">
+                        <option>Cadeira</option>
+                        <c:forEach var="cadeira" items="${daoCadeira.cadeira}">
+                            <option>${cadeira.idCadeira}</option>
+                        </c:forEach>
+                    </select>
                 </div>
+                
                 <div class="form-check col-md-11">
                     <label class="form-check-label">
                         <input type="checkbox" class="form-check-input">
@@ -84,7 +93,7 @@
                     </label>
                 </div>
                 <div class="form-group col-md-11">
-                    <button type="submit" class="btn btn-outline-success">Comprar</button>
+                    <button type="submit" class="btn btn-outline-success" onclick="document.getElementById('acao').value = 'compraIngresso'">Comprar</button>
                 </div>
             </form>
         </div>

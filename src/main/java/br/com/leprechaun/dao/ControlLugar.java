@@ -14,14 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControlLugar {
-    
+
     Connection conn;
-    
+
     public ControlLugar() {
-    this.conn = new ConnectionFactory().getConnection();
+        this.conn = new ConnectionFactory().getConnection();
     }
-    
-    public void cadastraLugar(ModelLugar lugar){
+
+    public void cadastraLugar(ModelLugar lugar) {
         try {
             String sql = "INSERT INTO LUGAR(LUG_CADEIRA, LUG_FILEIRA, LUG_DIA, LUG_SETOR) VALUES(?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -34,19 +34,19 @@ public class ControlLugar {
             System.out.println("Erro ao cadastrar lugar \n" + ex);
         }
     }
-    
-    public List<ModelLugar> getLugar() throws SQLException{
+
+    public List<ModelLugar> getLugar() throws SQLException {
         List<ModelLugar> listLugar = new ArrayList<>();
         String sql = "SELECT * FROM LUGAR";
         PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             ModelLugar lugar = new ModelLugar();
             ModelFileira fileira = new ModelFileira();
             ModelDia dia = new ModelDia();
             ModelCadeira cadeira = new ModelCadeira();
             ModelSetor setor = new ModelSetor();
-            
+
             lugar.setIdLugar(rs.getInt("LUG_ID"));
             cadeira.setIdCadeira(rs.getInt("LUG_CADEIRA"));
             fileira.setIdFileira(rs.getInt("LUG_FILEIRA"));
@@ -60,19 +60,26 @@ public class ControlLugar {
         }
         return listLugar;
     }
-    public int recuperaIdLugar(){
+
+    public int recuperaIdLugar() {
         try {
             String sql = "SELECT LUG_ID FROM LUGAR ORDER BY LUG_ID DESC LIMIT 1";
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            int idLugar=0;
-            while(rs.next()){
+            int idLugar = 0;
+            while (rs.next()) {
                 idLugar = rs.getInt("LUG_ID");
             }
             return idLugar;
         } catch (SQLException ex) {
-            System.err.println("Erro ao recuperar id do lugar!\n"+ex);
+            System.err.println("Erro ao recuperar id do lugar!\n" + ex);
             return 1;
         }
+    }
+
+    public List<ModelLugar> listLugarVazio(){
+        List<ModelLugar> lugarVazio = new ArrayList<>();
+        
+        return listLugarVazio();
     }
 }

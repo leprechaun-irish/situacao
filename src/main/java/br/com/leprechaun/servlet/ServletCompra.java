@@ -21,19 +21,20 @@ public class ServletCompra extends HttpServlet {
 
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
-        int setor = Integer.parseInt(request.getParameter("setor"));
-        int fileira = Integer.parseInt(request.getParameter("fileira"));
-        int cadeira = Integer.parseInt(request.getParameter("cadeira"));
+        String setor = request.getParameter("setor");
+        String fileira = request.getParameter("fileira");
+        String cadeira = request.getParameter("cadeira");
         String dia = request.getParameter("dia");
         String acao = request.getParameter("acao");
 
-        if (acao.equalsIgnoreCase("selecionaDia")) {
+        if (acao.equals("selecionaDia")) {
             ModelDia modelDia = new ModelDia();
             modelDia.setIdDia(Integer.parseInt(dia));
             System.out.println("Model Dia: " + modelDia.getIdDia());
             RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
         }
+        if (acao.equals("compraIngresso")){
 //----------------Instanciando Control------------------------------------------
             ControlCliente ctrlCliente = new ControlCliente();
             ControlLugar ctrlLugar = new ControlLugar();
@@ -55,9 +56,9 @@ public class ServletCompra extends HttpServlet {
             modelCliente.setIdCliente(ctrlCliente.recuperaIdCliente());
             
             modelDia.setIdDia(Integer.parseInt(dia));
-            modelSetor.setIdSetor(setor);
-            modelFileira.setIdFileira(fileira);
-            modelCadeira.setIdCadeira(cadeira);
+            modelSetor.setIdSetor(Integer.parseInt(setor));
+            modelFileira.setIdFileira(Integer.parseInt(fileira));
+            modelCadeira.setIdCadeira(Integer.parseInt(cadeira));
             modelLugar.setCadeira(modelCadeira);
             
             modelLugar.setDia(modelDia);
@@ -69,6 +70,9 @@ public class ServletCompra extends HttpServlet {
             modelIngresso.setCliente(modelCliente);
             modelIngresso.setLugar(modelLugar);
             ctrlIngresso.cadastraIngresso(modelIngresso);
+            System.out.println("Model Dia: " + modelDia.getIdDia());
+            RequestDispatcher rd = request.getRequestDispatcher("/promocao.jsp");
+        }
         
     }
 }

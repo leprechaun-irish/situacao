@@ -7,6 +7,8 @@
 
         <link rel="icon" type="image/png" sizes="96x96" href="imagens/favicon-96x96.png">
         
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        
         <!--Parallax-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 

@@ -45,5 +45,4 @@ public class ControlCadeira {
             return null;
         }
     }
-    
 }
