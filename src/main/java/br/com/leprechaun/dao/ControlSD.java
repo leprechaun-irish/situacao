@@ -48,6 +48,7 @@ public class ControlSD {
     }
     
     public List<ModelSetor> consulta(int dia) throws SQLException{
+        System.out.println("Dia: " + dia);
         List<ModelSetor> listSetorDia = new ArrayList<>();
         String sql = "SELECT SETOR.SET_ID ,SETOR.SET_DESCRICAO FROM SETOR_DIA INNER JOIN SETOR ON SETOR_DIA.SD_SETOR=SETOR.SET_ID WHERE SD_DIA=?";
         PreparedStatement stmt = conn.prepareStatement(sql);
@@ -58,6 +59,10 @@ public class ControlSD {
             modelSetor.setIdSetor(rs.getInt("SET_ID"));
             modelSetor.setDescricao(rs.getString("SET_DESCRICAO"));
             listSetorDia.add(modelSetor);
+        }
+        System.out.println("Dia: " + dia);
+        for(ModelSetor sd : listSetorDia){
+            System.out.println("Setor "+sd.getDescricao());
         }
         return listSetorDia;
     }

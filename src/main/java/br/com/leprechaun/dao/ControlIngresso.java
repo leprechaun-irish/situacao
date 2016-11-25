@@ -26,7 +26,6 @@ public class ControlIngresso {
         stmt.setInt(1, ingresso.getCliente().getIdCliente());
         stmt.setInt(2, ingresso.getLugar().getIdLugar());
         stmt.execute();
-        System.out.println("Final Cadastra ingresso");
         }catch(SQLException e){
             System.out.println("Erro ao cadastrar ingresso \n" + e);
         }

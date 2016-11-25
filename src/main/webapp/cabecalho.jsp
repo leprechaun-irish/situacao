@@ -23,13 +23,7 @@
 
         <!-- Bootstrap JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha256-j+XrvkQ4jJ99Hj0pJKPr6k0RCgxDDSTs3PBqLrX2EMc=" crossorigin="anonymous"></script>
-        
-        <script>
-            function seleciona() {
-                document.getElementById('acao').value = 'selecionaDia';
-                this.form.submit();
-            }
-        </script>
+       
     </head>
     <body>
         <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">

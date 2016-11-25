@@ -3,18 +3,10 @@ package br.com.leprechaun.model;
 public class ModelLugar {
     
     private int idLugar;
-    private int cadeira;
+    private ModelCadeira cadeira;
     private ModelFileira fileira;
     private ModelDia dia;
     private ModelSetor setor;
-
-    public ModelSetor getSetor() {
-        return setor;
-    }
-
-    public void setSetor(ModelSetor setor) {
-        this.setor = setor;
-    }
 
     public int getIdLugar() {
         return idLugar;
@@ -24,11 +16,11 @@ public class ModelLugar {
         this.idLugar = idLugar;
     }
 
-    public int getCadeira() {
+    public ModelCadeira getCadeira() {
         return cadeira;
     }
 
-    public void setCadeira(int cadeira) {
+    public void setCadeira(ModelCadeira cadeira) {
         this.cadeira = cadeira;
     }
 
@@ -46,5 +38,13 @@ public class ModelLugar {
 
     public void setDia(ModelDia dia) {
         this.dia = dia;
+    }
+
+    public ModelSetor getSetor() {
+        return setor;
+    }
+
+    public void setSetor(ModelSetor setor) {
+        this.setor = setor;
     }
 }

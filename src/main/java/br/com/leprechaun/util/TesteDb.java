@@ -18,28 +18,28 @@ public class TesteDb {
         ModelFileira modelFileira = new ModelFileira();
         ModelIngresso modelIngresso = new ModelIngresso();
         ModelLugar modelLugar = new ModelLugar();
-
+        ModelCadeira modelCadeira = new ModelCadeira();
+        
 //----------------Atribuindo valores--------------------------------------------
-        modelCliente.setIdCliente(ctrlCliente.recuperaIdCliente());
-        modelCliente.setNome("Bolsonaro");
-        modelCliente.setEmail("bolsonaro@bolsonaro.com");
+        modelCliente.setNome("Lucas");
+        modelCliente.setEmail("lucascaetanosantos@hotmail.com");
         ctrlCliente.cadastraCliente(modelCliente);
+        modelCliente.setIdCliente(ctrlCliente.recuperaIdCliente());
         
         modelDia.setIdDia(1);
-        
         modelSetor.setIdSetor(1);
-        
         modelFileira.setIdFileira(1);
-        
-        modelLugar.setIdLugar(ctrlLugar.recuperaIdLugar());
-        modelLugar.setCadeira(1);
+        modelCadeira.setIdCadeira(1);
+        modelLugar.setCadeira(modelCadeira);
+
         modelLugar.setDia(modelDia);
-        modelLugar.setSetor(modelSetor);
         modelLugar.setFileira(modelFileira);
+        modelLugar.setSetor(modelSetor);
         ctrlLugar.cadastraLugar(modelLugar);
+        modelLugar.setIdLugar(ctrlLugar.recuperaIdLugar());
         
-        modelIngresso.setLugar(modelLugar);
         modelIngresso.setCliente(modelCliente);
+        modelIngresso.setLugar(modelLugar);
         ctrlIngresso.cadastraIngresso(modelIngresso);
     }
 }

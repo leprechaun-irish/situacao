@@ -1,9 +1,11 @@
 package br.com.leprechaun.dao;
 
 import br.com.leprechaun.connection.ConnectionFactory;
+import br.com.leprechaun.model.ModelCadeira;
 import br.com.leprechaun.model.ModelDia;
 import br.com.leprechaun.model.ModelFileira;
 import br.com.leprechaun.model.ModelLugar;
+import br.com.leprechaun.model.ModelSetor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,13 +23,12 @@ public class ControlLugar {
     
     public void cadastraLugar(ModelLugar lugar){
         try {
-            String sql = "INSERT INTO LUGAR(LUG_ID, LUG_CADEIRA, LUG_FILEIRA, LUG_DIA, LUG_SETOR) VALUES(?,?,?,?,?)";
+            String sql = "INSERT INTO LUGAR(LUG_CADEIRA, LUG_FILEIRA, LUG_DIA, LUG_SETOR) VALUES(?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, lugar.getIdLugar());
-            stmt.setInt(2, lugar.getCadeira());
-            stmt.setInt(3, lugar.getFileira().getIdFileira());
-            stmt.setInt(4, lugar.getDia().getIdDia());
-            stmt.setInt(5, lugar.getSetor().getIdSetor());
+            stmt.setInt(1, lugar.getCadeira().getIdCadeira());
+            stmt.setInt(2, lugar.getFileira().getIdFileira());
+            stmt.setInt(3, lugar.getDia().getIdDia());
+            stmt.setInt(4, lugar.getSetor().getIdSetor());
             stmt.execute();
         } catch (SQLException ex) {
             System.out.println("Erro ao cadastrar lugar \n" + ex);
@@ -43,10 +44,18 @@ public class ControlLugar {
             ModelLugar lugar = new ModelLugar();
             ModelFileira fileira = new ModelFileira();
             ModelDia dia = new ModelDia();
+            ModelCadeira cadeira = new ModelCadeira();
+            ModelSetor setor = new ModelSetor();
+            
             lugar.setIdLugar(rs.getInt("LUG_ID"));
-            lugar.setCadeira(rs.getInt("LUG_CADEIRA"));
+            cadeira.setIdCadeira(rs.getInt("LUG_CADEIRA"));
             fileira.setIdFileira(rs.getInt("LUG_FILEIRA"));
+            setor.setIdSetor(rs.getInt("LUG_SETOR"));
             dia.setIdDia(rs.getInt("LUG_DIA"));
+            lugar.setCadeira(cadeira);
+            lugar.setFileira(fileira);
+            lugar.setSetor(setor);
+            lugar.setDia(dia);
             listLugar.add(lugar);
         }
         return listLugar;
@@ -60,7 +69,7 @@ public class ControlLugar {
             while(rs.next()){
                 idLugar = rs.getInt("LUG_ID");
             }
-            return idLugar+1;
+            return idLugar;
         } catch (SQLException ex) {
             System.err.println("Erro ao recuperar id do lugar!\n"+ex);
             return 1;

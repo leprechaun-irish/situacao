@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class FileiraDiaDB {
+public class InsereRegistros {
 
     public static void main(String[] args) throws SQLException {
         Connection conn = new ConnectionFactory().getConnection();
@@ -17,6 +17,13 @@ public class FileiraDiaDB {
         }
         for (int x = 25; x > 0; x--) {
             String sql = "INSERT INTO FILEIRA(FIL_ID) VALUES(?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, x);
+            stmt.execute();
+        }
+        
+        for (int x = 20; x > 0; x--) {
+            String sql = "INSERT INTO CADEIRA(CAD_ID) VALUES(?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, x);
             stmt.execute();
