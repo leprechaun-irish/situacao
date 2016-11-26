@@ -30,7 +30,7 @@ public class ControlSD {
 
     public List<ModelSD> getList() throws SQLException {
         List<ModelSD> listSD = new ArrayList<>();
-        String sql = "SELECT * FROM SETOR_DIA";
+        String sql = "SELECT SETOR_DIA.*, SETOR.SET_DESCRICAO FROM SETOR_DIA INNER JOIN SETOR ON SETOR.SET_ID=SETOR_DIA.SD_SETOR";
         PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
@@ -39,6 +39,8 @@ public class ControlSD {
             ModelSetor setor = new ModelSetor();
             sd.setIdSD(rs.getInt("SD_ID"));
             dia.setIdDia(rs.getInt("SD_DIA"));
+            setor.setIdSetor(rs.getInt("SD_SETOR"));
+            setor.setDescricao(rs.getString("SET_DESCRICAO"));
             sd.setDia(dia);
             sd.setSetor(setor);
             sd.setPreco(rs.getDouble("SD_PRECO"));
@@ -47,8 +49,7 @@ public class ControlSD {
         return listSD;
     }
     
-    public List<ModelSetor> consulta(int dia) throws SQLException{
-        System.out.println("Dia: " + dia);
+    public List<ModelSetor> consultaDiaSetor(int dia) throws SQLException{
         List<ModelSetor> listSetorDia = new ArrayList<>();
         String sql = "SELECT SETOR.SET_ID ,SETOR.SET_DESCRICAO FROM SETOR_DIA INNER JOIN SETOR ON SETOR_DIA.SD_SETOR=SETOR.SET_ID WHERE SD_DIA=?";
         PreparedStatement stmt = conn.prepareStatement(sql);
@@ -60,10 +61,14 @@ public class ControlSD {
             modelSetor.setDescricao(rs.getString("SET_DESCRICAO"));
             listSetorDia.add(modelSetor);
         }
-        System.out.println("Dia: " + dia);
-        for(ModelSetor sd : listSetorDia){
-            System.out.println("Setor "+sd.getDescricao());
-        }
         return listSetorDia;
+    }
+    
+    public void removeSD(ModelSD modelSD, ModelSetor modelSetor) throws SQLException{
+        String sql = "DELETE SETOR_DIA,SETOR FROM SETOR_DIA,SETOR WHERE SD_ID=? AND SETOR.SET_ID=?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, modelSD.getIdSD());
+        stmt.setInt(2, modelSetor.getIdSetor());
+        stmt.execute();
     }
 }
