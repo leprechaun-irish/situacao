@@ -37,4 +37,20 @@ public class ControlSetor {
         }
         return listSetor;
     }
+    
+    public int recuperaIdSetor(){
+        try {
+            String sql = "SELECT SET_ID FROM SETOR ORDER BY SET_ID DESC LIMIT 1";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            int idSetor=0;
+            while(rs.next()){
+                idSetor = rs.getInt("SET_ID");
+            }
+            return idSetor;
+        } catch (SQLException ex) {
+            System.err.println("Erro ao recuperar id do setor!\n"+ex);
+            return 1;
+        }
+    }
 }

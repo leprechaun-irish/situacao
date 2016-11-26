@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControlDia {
     
@@ -35,5 +37,22 @@ public class ControlDia {
             listDia.add(dia);
         }
         return listDia;
+    }
+    
+    public void removeDia(ModelDia modelDia){
+        try {
+            String sql ="DELETE FROM SETOR_DIA WHERE SD_DIA=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, modelDia.getIdDia());
+            stmt.execute();
+            stmt.close();
+            sql = "DELETE FROM DIA WHERE DIA_ID=?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, modelDia.getIdDia());
+            stmt.execute();
+            System.out.println("Chegou");
+        } catch (SQLException ex) {
+            System.out.println("Erro bem loko");
+        }
     }
 }

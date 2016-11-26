@@ -60,7 +60,7 @@
                     <label for="setor">Setor</label>
                     <select class="form-control" name="setor">
                         <option>Setor</option>
-                        <c:forEach var="setor" items="${daoSD.consulta(param.dia)}">
+                        <c:forEach var="setor" items="${daoSD.consultaDiaSetor(param.dia)}">
                             <option value="${setor.idSetor}">${setor.descricao}</option>
                         </c:forEach>
                     </select>

@@ -2,9 +2,11 @@ package br.com.leprechaun.servlet;
 
 import br.com.leprechaun.dao.ControlDia;
 import br.com.leprechaun.dao.ControlFileira;
+import br.com.leprechaun.dao.ControlSD;
 import br.com.leprechaun.dao.ControlSetor;
 import br.com.leprechaun.model.ModelDia;
 import br.com.leprechaun.model.ModelFileira;
+import br.com.leprechaun.model.ModelSD;
 import br.com.leprechaun.model.ModelSetor;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,24 +21,43 @@ import javax.servlet.http.HttpServletResponse;
 public class ServletAdministrador extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         String acao = request.getParameter("acao");
 
         try {
+//------------------------------------------------------------------------------
             if ("CadastraSetor".equalsIgnoreCase(acao)) {
                 String descricaoSetor = request.getParameter("descricaoSetor");
+                String dia = request.getParameter("diaSetor");
+                String preco = request.getParameter("precoSetor");
+                System.out.println("Dia: "+Integer.parseInt(dia));
+                System.out.println("Descrição setor: "+descricaoSetor);
+                System.out.println("Preço: "+Double.parseDouble(preco));
+//------------------------------------------------------------------------------
+                ModelSetor modelSetor = new ModelSetor();
+                ModelSD modelSD = new ModelSD();
+                ModelDia modelDia = new ModelDia();
                 ControlSetor controlSetor = new ControlSetor();
-                ModelSetor setor = new ModelSetor();
-                setor.setDescricao(descricaoSetor);
-                controlSetor.cadastraSetor(setor);
-
+                ControlSD controlSD = new ControlSD();
+//------------------------------------------------------------------------------
+                modelSetor.setDescricao(descricaoSetor);
+                controlSetor.cadastraSetor(modelSetor);
+                modelSetor.setIdSetor(controlSetor.recuperaIdSetor());
+                
+                modelDia.setIdDia(Integer.parseInt(dia));
+                modelSD.setDia(modelDia);
+                modelSD.setPreco(Double.parseDouble(preco));
+                modelSD.setSetor(modelSetor);
+                controlSD.cadastraSD(modelSD);
+//------------------------------------------------------------------------------
                 RequestDispatcher rd = request.getRequestDispatcher("/Administrador.jsp");
                 rd.forward(request, response);
-
             }
+//------------------------------------------------------------------------------
+
             if ("CadastraDia".equalsIgnoreCase(acao)) {
                 int dia = Integer.parseInt(request.getParameter("novoDia"));
                 ControlDia controlDia = new ControlDia();
@@ -60,6 +81,36 @@ public class ServletAdministrador extends HttpServlet {
         } catch (SQLException ex) {
             System.out.println("Erro administrador ao cadastrar setor: " + ex);
         }
-
+        
+        if("removeSetor".equals(acao)){
+            try {
+                int itemSD =Integer.parseInt(request.getParameter("itemSD"));
+                int itemSetor =Integer.parseInt(request.getParameter("itemSetor"));
+                ModelSetor modelSetor = new ModelSetor();
+                ModelSD modelSD = new ModelSD();
+                ControlSD controlSD = new ControlSD();
+                modelSD.setIdSD(itemSD);
+                modelSetor.setIdSetor(itemSetor);
+                controlSD.removeSD(modelSD, modelSetor);
+                RequestDispatcher rd = request.getRequestDispatcher("/Administrador.jsp");
+                rd.forward(request, response);
+            } catch (SQLException ex) {
+                System.err.println("Erro ao excluir setor!\n"+ex);
+            }
+        }
+        
+        if("removeDia".equals(acao)){
+            int itemDia = Integer.parseInt(request.getParameter("itemDia"));
+            ModelDia modelDia = new ModelDia();
+            ControlDia controlDia = new ControlDia();
+            modelDia.setIdDia(itemDia);
+            controlDia.removeDia(modelDia);
+            RequestDispatcher rd = request.getRequestDispatcher("/Administrador.jsp");
+            rd.forward(request, response);
+        }
+        
+        if("removeFileira".equals(acao)){
+            
+        }
     }
 }
