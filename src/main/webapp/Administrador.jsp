@@ -10,6 +10,14 @@
         <link  href="javascript/script.js"/>
     </head>
     <body>
+        
+        <% 
+            String usuario = (String) session.getAttribute("administrador");
+            if(usuario == null){
+                throw new ServletException("Administrador não logado!");
+            }
+        %>
+        
         <jsp:useBean id="daoDia" class="br.com.leprechaun.dao.ControlDia"/>
 
         <c:import url="cabecalho.jsp"/>
