@@ -6,9 +6,9 @@
         <title>Cabecalho</title>
 
         <link rel="icon" type="image/png" sizes="96x96" href="imagens/favicon-96x96.png">
-        
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        
+
         <!--Parallax-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
@@ -25,7 +25,7 @@
 
         <!-- Bootstrap JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha256-j+XrvkQ4jJ99Hj0pJKPr6k0RCgxDDSTs3PBqLrX2EMc=" crossorigin="anonymous"></script>
-       
+
     </head>
     <body>
         <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
@@ -34,28 +34,29 @@
                     <img src="imagens/leprechaun.png" style="width: 40px">
                 </li>
                 <div class="col-sm-6 offset-md-4">
-                <li class="nav nav-item">
-                    <a href="index.jsp"><button class="btn btn-outline-success">Home</button></a>
-                </li>
-                <li class="nav nav-item">
-                    <button class="btn btn-outline-success">Ingressos</button>
-                </li>
-                <li class="nav nav-item">
-                    <button class="btn btn-outline-success">Jogos</button>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-item" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <button class="btn btn-outline-success dropdown-toggle">Sobre</button>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Estadio</a>
-                        <a class="dropdown-item" href="#">Setores</a>
-                        <a class="dropdown-item" href="promocao.jsp">Promoção</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Contato</a>
+                    <li class="nav nav-item">
+                        <a href="index.jsp"><button class="btn btn-outline-success">Home</button></a>
+                    </li>
+                    <li class="nav nav-item">
+                        <button class="btn btn-outline-success">Ingressos</button>
+                    </li>
+                    <li class="nav nav-item">
+                        <button class="btn btn-outline-success">Jogos</button>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-item" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-outline-success dropdown-toggle">Sobre</button>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Estadio</a>
+                            <a class="dropdown-item" href="#">Setores</a>
+                            <a class="dropdown-item" href="http://localhost:8080/situacao/sobre.jsp">Sobre"Slides"</a>
+                            <a class="dropdown-item" href="promocao.jsp">Promoção</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Contato</a>
 
-                    </div>
-                </li>
+                        </div>
+                    </li>
                 </div>
             </ul>
         </nav>
