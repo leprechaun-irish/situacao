@@ -50,7 +50,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#">Estadio</a>
                             <a class="dropdown-item" href="#">Setores</a>
-                            <a class="dropdown-item" href="http://localhost:8080/situacao/sobre.jsp">Sobre"Slides"</a>
+                            <a class="dropdown-item" href="http://localhost:8080/situacao/Slides.jsp">Sobre"Slides"</a>
                             <a class="dropdown-item" href="promocao.jsp">Promoção</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Contato</a>
