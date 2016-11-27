@@ -5,6 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
+        <link rel="icon" type="image/png" sizes="96x96" href="imagens/favicon-96x96.png">
         <style>
 
             @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
