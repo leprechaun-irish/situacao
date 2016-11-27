@@ -3,6 +3,9 @@ package br.com.leprechaun.servlet;
 import br.com.leprechaun.dao.*;
 import br.com.leprechaun.model.*;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,11 +33,17 @@ public class ServletCompra extends HttpServlet {
         if (acao.equals("selecionaDia")) {
             ModelDia modelDia = new ModelDia();
             modelDia.setIdDia(Integer.parseInt(dia));
-            System.out.println("Model Dia: " + modelDia.getIdDia());
+            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+            rd.forward(request, response);
+        }
+        if(acao.equals("buscaCadeira")){
+            ModelFileira fil = new ModelFileira();
+            fil.setIdFileira(Integer.parseInt(fileira));
             RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
         }
         if (acao.equals("compraIngresso")){
+                    
 //----------------Instanciando Control------------------------------------------
             ControlCliente ctrlCliente = new ControlCliente();
             ControlLugar ctrlLugar = new ControlLugar();
@@ -70,8 +79,8 @@ public class ServletCompra extends HttpServlet {
             modelIngresso.setCliente(modelCliente);
             modelIngresso.setLugar(modelLugar);
             ctrlIngresso.cadastraIngresso(modelIngresso);
-            System.out.println("Model Dia: " + modelDia.getIdDia());
             RequestDispatcher rd = request.getRequestDispatcher("/promocao.jsp");
+            rd.forward(request, response);
         }
         
     }

@@ -8,18 +8,19 @@
         <title>Admin: Cadastra Setor</title>
     </head>
     <body>
-        
-        <% 
+
+        <%
             String usuario = (String) session.getAttribute("administrador");
-            if(usuario == null){
+            if (usuario == null) {
                 throw new ServletException("Administrador não logado!");
             }
         %>
-        
+
         <jsp:useBean id="daoDia" class="br.com.leprechaun.dao.ControlDia"/>
         <jsp:useBean id="daoSetor" class="br.com.leprechaun.dao.ControlSetor"/>
         <jsp:useBean id="daoSD" class="br.com.leprechaun.dao.ControlSD"/>
         <jsp:useBean id="daoFileira" class="br.com.leprechaun.dao.ControlFileira"/>
+        <jsp:useBean id="daoIngresso" class="br.com.leprechaun.dao.ControlIngresso"/>
 
         <c:import url="cabecalho.jsp"/>
         <div style="padding-top: 70px; padding-bottom: 15px">
@@ -149,7 +150,6 @@
                                                 <th>Dia</th>
                                                 <th>Preço</th>
                                                 <th>Excluir</th>
-                                                <th>Alterar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -165,7 +165,6 @@
                                                 <td><span class="fa fa-remove" onclick="document.getElementById('itemSD').value = '${sd.idSD}';
                                                         document.getElementById('itemSetor').value = '${sd.setor.idSetor}';
                                                         javascript:formListaSetor.submit()"></span></td>
-                                                <td><span class="fa fa-pencil" onclick=""></span></td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
@@ -195,7 +194,6 @@
                                             <tr>
                                                 <th>Dia</th>
                                                 <th>Excluir</th>
-                                                <th>Alterar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -205,8 +203,7 @@
                                             <tr>
                                                 <td>${dia.idDia}</td>
                                                 <td><span class="fa fa-remove" onclick="document.getElementById('itemDia').value = '${dia.idDia}';
-                                                            javascript:formListaDia.submit()"></span></td>
-                                                <td><span class="fa fa-pencil" onclick=""></span></td>
+                                                        javascript:formListaDia.submit()"></span></td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
@@ -236,23 +233,21 @@
                                             <tr>
                                                 <th>Fileira</th>
                                                 <th>Excluir</th>
-                                                <th>Alterar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <input type="hidden" name="acao" id="acao" value="removeFileira">
                                         <input type="hidden" name="itemFileira" id="itemFileira" value="">
-                                            <c:forEach var="fileira" items="${daoFileira.fileira}">
-                                                <tr>
-                                                    <td>${fileira.idFileira}</td>
-                                                    <td><span class="fa fa-remove" onclick="document.getElementById('itemFileira').value = '${fileira.idFileira}';
-                                                            javascript:formListaFileira.submit()"></span></td>
-                                                    <td><span class="fa fa-pencil" onclick=""></span></td>
-                                                </tr>
-                                            </c:forEach>
+                                        <c:forEach var="fileira" items="${daoFileira.fileira}">
+                                            <tr>
+                                                <td>${fileira.idFileira}</td>
+                                                <td><span class="fa fa-remove" onclick="document.getElementById('itemFileira').value = '${fileira.idFileira}';
+                                                        javascript:formListaFileira.submit()"></span></td>
+                                            </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
-                                </form>>
+                                </form>
                             </div>
                         </div>
                     </div>

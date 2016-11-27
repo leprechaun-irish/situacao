@@ -76,10 +76,4 @@ public class ControlLugar {
             return 1;
         }
     }
-
-    public List<ModelLugar> listLugarVazio(){
-        List<ModelLugar> lugarVazio = new ArrayList<>();
-        
-        return listLugarVazio();
-    }
 }

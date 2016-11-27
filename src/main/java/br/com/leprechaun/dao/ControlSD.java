@@ -70,5 +70,7 @@ public class ControlSD {
         stmt.setInt(1, modelSD.getIdSD());
         stmt.setInt(2, modelSetor.getIdSetor());
         stmt.execute();
+        stmt.close();
+        sql = "";
     }
 }

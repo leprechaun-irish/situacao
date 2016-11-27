@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ServletLogin", urlPatterns = {"/ServletLogin"})
 public class ServletLogin extends HttpServlet {
 
+    @Override
     public void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 
         String login = req.getParameter("login");
@@ -19,6 +20,7 @@ public class ServletLogin extends HttpServlet {
 
         if (!login.trim().equals("admin") || !senha.trim().equals("123")) {
             response.sendError(0);
+            response.sendRedirect("/loginAdmin.jsp");
         } else {
             HttpSession session = req.getSession();
             session.setAttribute("administrador", login);

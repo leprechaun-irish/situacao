@@ -1,21 +1,17 @@
 package br.com.leprechaun.util;
 
-import br.com.leprechaun.dao.ControlLugar;
-import br.com.leprechaun.dao.ControlSD;
-import br.com.leprechaun.model.ModelLugar;
-import br.com.leprechaun.model.ModelSetor;
+import br.com.leprechaun.dao.ControlCadeira;
+import br.com.leprechaun.model.ModelCadeira;
 import java.sql.SQLException;
 
 public class TesteList {
 
     public static void main(String[] args) throws SQLException {
 
-        ControlSD sd = new ControlSD();
-        ControlLugar cl = new ControlLugar();
-        int dia = 1;
+        ControlCadeira ctrlCadeira = new ControlCadeira();
         
-        for(ModelLugar lugar : cl.getLugar()){
-            System.out.println(lugar.getSetor().getDescricao());
+        for(ModelCadeira cad : ctrlCadeira.buscaCadeiraVazia(1, 1, 1)){
+            System.out.println("Cadeira: "+cad.getIdCadeira());
         }
     }
 

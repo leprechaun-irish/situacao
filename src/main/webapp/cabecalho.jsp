@@ -25,37 +25,36 @@
 
         <!-- Bootstrap JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha256-j+XrvkQ4jJ99Hj0pJKPr6k0RCgxDDSTs3PBqLrX2EMc=" crossorigin="anonymous"></script>
-
+        
+        <style>
+            ::-webkit-scrollbar{
+                display: none;
+            }
+        </style>
+        
     </head>
     <body>
         <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
             <ul class="nav navbar-nav" id="collapseExample">
-                <li class="nav nav-item">
-                    <img src="imagens/leprechaun.png" style="width: 40px">
-                </li>
-                <div class="col-sm-6 offset-md-4">
-                    <li class="nav nav-item">
-                        <a href="index.jsp"><button class="btn btn-outline-success">Home</button></a>
-                    </li>
-                    <li class="nav nav-item">
-                        <button class="btn btn-outline-success">Ingressos</button>
-                    </li>
-                    <li class="nav nav-item">
-                        <button class="btn btn-outline-success">Jogos</button>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-item" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <button class="btn btn-outline-success dropdown-toggle">Sobre</button>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Estadio</a>
-                            <a class="dropdown-item" href="#">Setores</a>
-                            <a class="dropdown-item" href="http://localhost:8080/situacao/Slides.jsp">Sobre"Slides"</a>
-                            <a class="dropdown-item" href="promocao.jsp">Promoção</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Contato</a>
 
-                        </div>
+                <div class="col-sm-6 offset-md-1">
+                    <li class="nav nav-item">
+                        <a href="index.jsp"><img src="imagens/leprechaun.png" style="width: 40px"></a>
+                    </li>
+                    <li class="nav nav-item">
+                        <a href="index.jsp"><button id="btnHome" class="btn btn-outline-success">Home</button></a>
+                    </li>
+                    <li class="nav nav-item">
+                        <a href="Ingressos.jsp"><button id="btnIngresso" class="btn btn-outline-success">Ingressos</button></a>
+                    </li>
+                    <li class="nav nav-item">
+                        <a href="promocao.jsp"><button id="btnPromocao" class="btn btn-outline-success">Promoção</button></a>
+                    </li>
+                    <li class="nav nav-item">
+                        <a href="Slides.jsp"><button id="btnSlide" class="btn btn-outline-success">Sobre"Slides"</button></a>
+                    </li>
+                    <li class="nav nav-item">
+                        <a href="Administrador.jsp"><button id="btnGerenciar" class="btn btn-outline-success">Gerenciar</button></a>
                     </li>
                 </div>
             </ul>
