@@ -21,12 +21,12 @@ public class ControlIngresso {
 
     public void cadastraIngresso(ModelIngresso ingresso) {
         String sql = "INSERT INTO INGRESSO(ING_CLIENTE, ING_LUGAR) VALUES(?,?)";
-        try{
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, ingresso.getCliente().getIdCliente());
-        stmt.setInt(2, ingresso.getLugar().getIdLugar());
-        stmt.execute();
-        }catch(SQLException e){
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, ingresso.getCliente().getIdCliente());
+            stmt.setInt(2, ingresso.getLugar().getIdLugar());
+            stmt.execute();
+        } catch (SQLException e) {
             System.out.println("Erro ao cadastrar ingresso \n" + e);
         }
     }
@@ -36,7 +36,7 @@ public class ControlIngresso {
         String sql = "SELECT * FROM INGRESSO";
         PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             ModelIngresso ingresso = new ModelIngresso();
             ModelCliente cliente = new ModelCliente();
             ModelLugar lugar = new ModelLugar();
@@ -48,4 +48,23 @@ public class ControlIngresso {
         }
         return listIngresso;
     }
+
+    public double totalArrecadado() {
+        double total = 0.00;
+        String sql = ""
+                + "SELECT * FROM INGRESSO\n"
+                + "INNER JOIN LUGAR ON ING_LUGAR = LUG_ID\n"
+                + "INNER JOIN SETOR_DIA ON LUG_SETOR = SD_SETOR AND LUG_DIA = SD_DIA;";
+        try {
+            PreparedStatement stmt1 = conn.prepareStatement(sql);
+            ResultSet rs = stmt1.executeQuery();
+            while (rs.next()) {
+                total += rs.getDouble("SD_PRECO");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro ao somar total arrecadado: " + ex);
+        }
+        return total;
+    }
+
 }
