@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControlSD {
 
@@ -48,14 +50,14 @@ public class ControlSD {
         }
         return listSD;
     }
-    
-    public List<ModelSetor> consultaDiaSetor(int dia) throws SQLException{
+
+    public List<ModelSetor> consultaDiaSetor(int dia) throws SQLException {
         List<ModelSetor> listSetorDia = new ArrayList<>();
         String sql = "SELECT SETOR.SET_ID ,SETOR.SET_DESCRICAO FROM SETOR_DIA INNER JOIN SETOR ON SETOR_DIA.SD_SETOR=SETOR.SET_ID WHERE SD_DIA=?";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, dia);
         ResultSet rs = stmt.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             ModelSetor modelSetor = new ModelSetor();
             modelSetor.setIdSetor(rs.getInt("SET_ID"));
             modelSetor.setDescricao(rs.getString("SET_DESCRICAO"));
@@ -63,8 +65,8 @@ public class ControlSD {
         }
         return listSetorDia;
     }
-    
-    public void removeSD(ModelSD modelSD, ModelSetor modelSetor) throws SQLException{
+
+    public void removeSD(ModelSD modelSD, ModelSetor modelSetor) throws SQLException {
         String sql = "DELETE SETOR_DIA,SETOR FROM SETOR_DIA,SETOR WHERE SD_ID=? AND SETOR.SET_ID=?";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, modelSD.getIdSD());
@@ -72,5 +74,23 @@ public class ControlSD {
         stmt.execute();
         stmt.close();
         sql = "";
+    }
+
+    public double buscaPreco(int dia, int setor){
+        try {
+            String sql = "SELECT SETOR_DIA.SD_PRECO FROM INGRESSO INNER JOIN SETOR_DIA ON SETOR_DIA.SD_DIA=? AND SETOR_DIA.SD_SETOR=? LIMIT 1";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, dia);
+            stmt.setInt(2, setor);
+            ResultSet rs = stmt.executeQuery();
+            double preco=0;
+            while(rs.next()){
+                preco = rs.getDouble("SD_PRECO");
+            }
+            return preco;
+        } catch (SQLException ex) {
+            System.out.println("Erro ao buscar preço!\n"+ex);
+            return 0;
+        }
     }
 }

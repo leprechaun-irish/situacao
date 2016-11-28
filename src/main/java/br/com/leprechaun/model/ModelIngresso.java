@@ -6,6 +6,15 @@ public class ModelIngresso {
     private int idIngresso;
     private ModelCliente cliente;
     private ModelLugar lugar;
+    private double preco;
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
     private Timestamp data;
 
     public int getIdIngresso() {

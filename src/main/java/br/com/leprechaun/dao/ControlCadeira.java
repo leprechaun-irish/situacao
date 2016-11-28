@@ -47,9 +47,11 @@ public class ControlCadeira {
         }
     }
 
+    List<ModelCadeira> listCadeiraOcupada = new ArrayList<>();
+
     public List<ModelCadeira> buscaCadeiraOcupada(int dia, int setor, int fileira) throws SQLException {
         ControlLugar ctrlLugar = new ControlLugar();
-        List<ModelCadeira> listCadeiraOcupada = new ArrayList<>();
+//        List<ModelCadeira> listCadeiraOcupada = new ArrayList<>();
         String sql = "SELECT * FROM CADEIRA";
         PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
@@ -71,17 +73,26 @@ public class ControlCadeira {
         return listCadeiraOcupada;
     }
 
-    public List<ModelCadeira> buscaCadeiraVazia(int dia, int setor, int fileira) throws SQLException {
+    public List<ModelCadeira> buscaCadeiraVazia() throws SQLException {
         List<ModelCadeira> listCadeiraVazia = new ArrayList<>();
         String sql = "SELECT * FROM CADEIRA";
         PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            ModelCadeira modelCadeira = new ModelCadeira();
-            modelCadeira.setIdCadeira(rs.getInt("CAD_ID"));
-            listCadeiraVazia.add(modelCadeira);
+            ModelCadeira cadeira = new ModelCadeira();
+            cadeira.setIdCadeira(rs.getInt("CAD_ID"));
+            listCadeiraVazia.add(cadeira);
         }
-        listCadeiraVazia.removeAll(buscaCadeiraOcupada(dia, setor, fileira));
+
+        for (int x = 0; x < listCadeiraOcupada.size(); x++) {
+            for (int y = 0; y < listCadeiraVazia.size(); y++) {
+                if(listCadeiraVazia==listCadeiraOcupada){
+                    
+                }
+            }
+        }
+        
+        
         return listCadeiraVazia;
     }
 }
