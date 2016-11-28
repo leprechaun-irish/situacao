@@ -9,9 +9,9 @@ public class TesteBuscaCadeira {
 
     public static void main(String[] args) throws SQLException{
         ControlCadeira controlCadeira = new ControlCadeira();
-        for(ModelCadeira cadeira : controlCadeira.buscaCadeiraVazia(1, 1, 1)){
-            System.out.println("Dia: "+cadeira.getIdCadeira());
-        }
+        //for(ModelCadeira cadeira : controlCadeira.buscaCadeiraVazia(1, 1, 1)){
+        //    System.out.println("Dia: "+cadeira.getIdCadeira());
+        //}
     }
     
 }

@@ -254,6 +254,56 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="card">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFor" aria-expanded="true" aria-controls="collapseFor">
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-outline-success" role="tab" id="headingOne">
+                                    <span class="fa fa-th-list"></span>
+                                    Lista de ingressos
+                                </button>
+                            </div>
+                        </a>
+                        <div id="collapseFor" class="collapse" role="tabpanel" aria-labelledby="headingFor">
+                            <div class=" table-responsive">
+                                <form name="formListaFileira" method="get" action="ServletAdministrador">
+                                    <table class="table table-sm  table-hover table-inverse">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nome</th>
+                                                <th>Dia</th>
+                                                <th>Setor</th>
+                                                <th>Fileria</th>
+                                                <th>Cadeira</th>
+                                                <th>Preço</th>
+                                                <th>Excluir</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <input type="hidden" name="acao" id="acao" value="removeFileira">
+                                        <input type="hidden" name="itemFileira" id="itemFileira" value="">
+                                        <c:forEach var="ing" items="${daoIngresso.ingresso}">
+                                            <tr>
+                                                <td>${ing.idIngresso}</td>
+                                                <td>${ing.cliente.nome}</td>
+                                                <td>${ing.lugar.dia.idDia}</td>
+                                                <td>${ing.lugar.setor.descricao}</td>
+                                                <td>${ing.lugar.fileira.idFileira}</td>
+                                                <td>${ing.lugar.cadeira.idCadeira}</td>
+                                                <td>${ing.preco}</td>
+                                                <td><span class="fa fa-remove" onclick="document.getElementById('itemSD').value = '${sd.idSD}';
+                                                        document.getElementById('itemSetor').value = '${sd.setor.idSetor}';
+                                                        javascript:formListaSetor.submit()"></span></td>
+                                            </tr>
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
 
