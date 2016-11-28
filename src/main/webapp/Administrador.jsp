@@ -307,6 +307,7 @@
             </div>
 
             Total Arrecadado: R$ ${daoIngresso.totalArrecadado()}
+            
             <br><br>
         </div>
 

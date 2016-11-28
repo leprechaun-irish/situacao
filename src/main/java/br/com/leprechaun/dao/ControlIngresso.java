@@ -105,4 +105,31 @@ public class ControlIngresso {
         return total;
     }
 
+    public String totalDiaArrecadado(int dia) throws SQLException {
+        int totalDia = 0;
+        double valorTotalDia = 0.0;
+        String sql = ""
+                + "SELECT * FROM INGRESSO\n"
+                + "INNER JOIN LUGAR ON ing_LUGAR = LUG_ID\n"
+                + "INNER JOIN SETOR_DIA ON LUG_SETOR = SD_SETOR AND LUG_DIA = SD_DIA\n"
+                + "WHERE LUG_DIA = ?";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, dia);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                totalDia++;
+                valorTotalDia += rs.getDouble("SD_PRECO");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro ao somar total arrecadado: " + ex);
+        }
+        
+        return "Total: "+totalDia+"\nValor Total: "+valorTotalDia;
+    }
+    
+    public void setorMaisLotado(int dia){
+        String sql = "";
+    }
+    
 }
