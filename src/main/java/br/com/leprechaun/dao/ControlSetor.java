@@ -56,28 +56,33 @@ public class ControlSetor {
         }
     }
 
-    public String setorMaisLotado() throws SQLException {
-        int idMaior;
-        int x = 0;
-        int y = 0;
-        String sql
-                = "USE ESTADIO;\n"
-                + "SELECT LUG_SETOR, count(*)\n"
-                + "FROM INGRESSO\n"
+    public int setorMaisLotado(int idSetor, int dia, String resposta) throws SQLException {
+
+        int qtdeIngresso = 0;
+        int valorArrecadado = 0;
+
+        String sql = ""
+                + "SELECT * FROM INGRESSO\n"
                 + "INNER JOIN LUGAR ON ING_LUGAR = LUG_ID\n"
+                + "INNER JOIN SETOR ON LUG_SETOR = SET_ID\n"
                 + "INNER JOIN SETOR_DIA ON LUG_SETOR = SD_SETOR AND LUG_DIA = SD_DIA\n"
-                + "INNER JOIN SETOR ON SD_SETOR = SET_DESCRICAO\n"
-                + "GROUP BY LUG_SETOR\n"
-                + "HAVING COUNT(*) > 1;";
+                + "WHERE SET_ID = ? AND LUG_DIA = ?";
         stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, idSetor);
+        stmt.setInt(2, dia);
         rs = stmt.executeQuery();
+
         while (rs.next()) {
-            for (ModelSetor modelSetor : getSetor()) {
-                if (rs.getInt("LUG_SETOR") == modelSetor.getIdSetor() && rs.getInt("LUG_DIA") == 2) {
-                    x++;
-                }
-            }
+            qtdeIngresso++;
+            valorArrecadado += rs.getDouble("SD_PRECO");
         }
-        return null;
+
+        if (resposta.equalsIgnoreCase("qtdeIngresso")) {
+            return qtdeIngresso;
+        } else {
+            return valorArrecadado;
+        }
+
     }
+
 }

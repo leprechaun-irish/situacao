@@ -25,6 +25,7 @@
         <jsp:useBean id="daoIngresso" class="br.com.leprechaun.dao.ControlIngresso"/>
 
         <c:import url="cabecalho.jsp"/>
+
         <div style="padding-top: 70px; padding-bottom: 15px">
 
             <!-- Modal Setor-->
@@ -255,10 +256,58 @@
                     </div>
                 </div>
             </div>
-            
-            Total Arrecadado: R$ ${daoIngresso.totalArrecadado()}
-            
+
+            <div style="text-align: center"> Total Arrecadado: R$ ${daoIngresso.totalArrecadado()}</div>
             <br><br>
+
+            <table border="1px" style="margin: 0 auto">
+                <tr>
+                    <td colspan="3">
+                        Setor mais lotado 
+
+                        <select>
+                            <c:forEach var="dia" items="${daoDia.dia}">
+                                <option id="d${dia.idDia}">${dia.idDia}° Dia</option>
+                            </c:forEach>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Setor</td>
+                    <td>Qtde Ingressos Vendidos</td>
+                    <td>Valor arrecadado</td>
+                </tr>
+
+                <c:forEach var="setor" items="${daoSetor.setor}">
+                    <tr>
+                        <td>${setor.descricao}</td>
+                        <td>${daoSetor.setorMaisLotado(setor.idSetor, 2, "qtdeIngresso")}</td>
+                        <td>R$ ${daoSetor.setorMaisLotado(setor.idSetor, 2, null)}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+
+            <br><br>
+
+            <table border="1px" style="margin: 0 auto">
+                <tr>
+                    <td colspan="3">Dia com mais lucro</td>
+                </tr>
+                <tr>
+                    <td>Dia</td>
+                    <td>Qtde Ingressos Vendidos</td>
+                    <td>Valor arrecadado</td>
+                </tr>
+
+                <c:forEach var="dia" items="${daoDia.dia}">
+                    <tr>
+                        <td>${dia.idDia}</td>
+                        <td>${daoDia.contaTotalDia(dia.idDia, "valorTotal")}</td>
+                        <td>R$ ${daoDia.contaTotalDia(dia.idDia, null)}</td>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
 
         <c:import url="rodape.jsp"/>

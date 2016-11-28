@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Leprechaun</title>
         <link rel="icon" type="image/png" sizes="96x96" href="imagens/favicon-96x96.png">
-
+        
         <script type="text/javascript">
             function carregaDia() {
                 var d = '${param.dia}';
