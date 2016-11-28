@@ -3,7 +3,6 @@ package br.com.leprechaun.servlet;
 import br.com.leprechaun.dao.*;
 import br.com.leprechaun.model.*;
 import java.io.IOException;
-import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,65 +42,42 @@ public class ServletCompra extends HttpServlet {
         if (acao.equals("compraIngresso")) {
             try {
 //----------------Instanciando Control------------------------------------------
-                ControlCliente ctrlCliente = new ControlCliente();
-                ControlLugar ctrlLugar = new ControlLugar();
-                ControlIngresso ctrlIngresso = new ControlIngresso();
-
-//----------------Instanciando Model--------------------------------------------
-                ModelCliente modelCliente = new ModelCliente();
-                ModelDia modelDia = new ModelDia();
-                ModelSetor modelSetor = new ModelSetor();
-                ModelFileira modelFileira = new ModelFileira();
-                ModelIngresso modelIngresso = new ModelIngresso();
-                ModelLugar modelLugar = new ModelLugar();
-                ModelCadeira modelCadeira = new ModelCadeira();
-
-                ControlCadeira ctrlCadeira = new ControlCadeira();
-
-                int diaI = Integer.parseInt(dia);
-                int setorI = Integer.parseInt(setor);
-                int fileiraI = Integer.parseInt(fileira);
-                int cadeiraI = Integer.parseInt(cadeira);
-
-                boolean compra = false;
-
-                for (ModelCadeira cad : ctrlCadeira.buscaCadeiraOcupada(diaI, setorI, fileiraI)) {
-                    if (cad.getIdCadeira() == cadeiraI) {
-                        compra = false;
-                        break;
-                    } else {
-                        compra = true;
-                    }
-                }
-
-//----------------Atribuindo valores--------------------------------------------
-                modelCliente.setNome(nome);
-                modelCliente.setEmail(email);
-                ctrlCliente.cadastraCliente(modelCliente);
-                modelCliente.setIdCliente(ctrlCliente.recuperaIdCliente());
-
-                modelDia.setIdDia(Integer.parseInt(dia));
-                modelSetor.setIdSetor(Integer.parseInt(setor));
-                modelFileira.setIdFileira(Integer.parseInt(fileira));
-                modelCadeira.setIdCadeira(Integer.parseInt(cadeira));
-                modelLugar.setCadeira(modelCadeira);
-
-                modelLugar.setDia(modelDia);
-                modelLugar.setFileira(modelFileira);
-                modelLugar.setSetor(modelSetor);
-                ctrlLugar.cadastraLugar(modelLugar);
-                modelLugar.setIdLugar(ctrlLugar.recuperaIdLugar());
-
-                modelIngresso.setCliente(modelCliente);
-                modelIngresso.setLugar(modelLugar);
-                ctrlIngresso.cadastraIngresso(modelIngresso);
-                System.out.println("Ingresso comprado");
-
-                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-                rd.forward(request, response);
-            } catch (SQLException ex) {
-                System.out.println("Erro na compra do ingresso!" + ex);
-            }
+            ControlCliente ctrlCliente = new ControlCliente();
+            ControlLugar ctrlLugar = new ControlLugar();
+            ControlIngresso ctrlIngresso = new ControlIngresso();
+            
+            //----------------Instanciando Model--------------------------------------------
+            ModelCliente modelCliente = new ModelCliente();
+            ModelDia modelDia = new ModelDia();
+            ModelSetor modelSetor = new ModelSetor();
+            ModelFileira modelFileira = new ModelFileira();
+            ModelIngresso modelIngresso = new ModelIngresso();
+            ModelLugar modelLugar = new ModelLugar();
+            ModelCadeira modelCadeira = new ModelCadeira();
+            
+            //----------------Atribuindo valores--------------------------------------------
+            modelCliente.setNome(nome);
+            modelCliente.setEmail(email);
+            ctrlCliente.cadastraCliente(modelCliente);
+            modelCliente.setIdCliente(ctrlCliente.recuperaIdCliente());
+            
+            modelDia.setIdDia(Integer.parseInt(dia));
+            modelSetor.setIdSetor(Integer.parseInt(setor));
+            modelFileira.setIdFileira(Integer.parseInt(fileira));
+            modelCadeira.setIdCadeira(Integer.parseInt(cadeira));
+            
+            modelLugar.setCadeira(modelCadeira);
+            modelLugar.setDia(modelDia);
+            modelLugar.setFileira(modelFileira);
+            modelLugar.setSetor(modelSetor);
+            ctrlLugar.cadastraLugar(modelLugar);
+            modelLugar.setIdLugar(ctrlLugar.recuperaIdLugar());
+            
+            modelIngresso.setCliente(modelCliente);
+            modelIngresso.setLugar(modelLugar);
+            ctrlIngresso.cadastraIngresso(modelIngresso);
+            RequestDispatcher rd = request.getRequestDispatcher("/promocao.jsp");
+            rd.forward(request, response);
         }
 
     }

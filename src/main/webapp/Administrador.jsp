@@ -1,4 +1,5 @@
 
+<%@page import="br.com.leprechaun.dao.ControlIngresso"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -254,7 +255,12 @@
                     </div>
                 </div>
             </div>
+            
+            Total Arrecadado: R$ ${daoIngresso.totalArrecadado()}
+            <br><br>
+            Setor mais lotado 2° dia: Azul com 25 lugares
         </div>
+
         <c:import url="rodape.jsp"/>
     </body>
 </html>
