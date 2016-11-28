@@ -103,7 +103,7 @@ header {
     color: #fff;
 }
 .paralax4 {
-    background: url(https://www.oficinadanet.com.br/imagens/post/16696/capa.jpg) 50% 0 no-repeat fixed;
+    background: url(http://www.faceyspacey.com/images/article-images/netbeans-logo.jpg) 50% 0 no-repeat fixed;
     margin: 0 auto;
     padding: 50px 0;
     background-position: center center;
@@ -115,7 +115,43 @@ header {
     color: #fff;
 }
 .paralax5 {
-    background: url(http://www.aha.io/assets/integration_logos/github-bb449e0ffbacbcb7f9c703db85b1cf0b.png) 50% 0 no-repeat fixed;
+    background: url(https://crossbrowsertesting.com/design/images/github-logo.png) 50% 0 no-repeat fixed;
+    margin: 0 auto;
+    padding: 50px 0;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+.paralax6 {
+    background: url(http://www.chankok.com/wp-content/uploads/2016/09/maven.png) 50% 0 no-repeat fixed;
+    margin: 0 auto;
+    padding: 50px 0;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+.paralax7 {
+    background: url(http://www.blog.wlconsultoria.net/wp-content/uploads/2015/07/logo_bootstrap.jpg?x14548) 50% 0 no-repeat fixed;
+    margin: 0 auto;
+    padding: 50px 0;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+.paralax8 {
+    background: url(https://res.cloudinary.com/devpost/image/fetch/s--cC3yAO1K--/http://renanslopes8.com.br/projetosgit/readme-img/jquery_logo.png) 50% 0 no-repeat fixed;
     margin: 0 auto;
     padding: 50px 0;
     background-position: center center;
