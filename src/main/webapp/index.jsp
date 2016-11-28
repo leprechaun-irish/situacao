@@ -14,11 +14,11 @@
                 var d = '${param.dia}';
                 document.getElementById("d" + d).selected = "true";
                 
-                var s = '${param.setor}';
-                document.getElementById("s" + s).selected = "true";
+                var nome = '${param.nome}';
+                document.getElementById('nome').value=nome;
                 
-                var f = '${param.fileira}';
-                document.getElementById("f" + f).selected = "true";
+                var email = '${param.email}';
+                document.getElementById('email').value=email;
 
                 $(document).ready(function () {
                     window.location.href = '#foo';
@@ -88,11 +88,11 @@
 
                 <div class="form-group col-md-11">
                     <label for="nome">Nome</label>
-                    <input name="nome" type="text" class="form-control" placeholder="Ex: Jair Bolsonaro">
+                    <input id="nome" name="nome" type="text" class="form-control" placeholder="Ex: Jair Bolsonaro">
                 </div>
                 <div class="form-group col-md-11">
                     <label for="email">Email</label>
-                    <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Ex: bolsonaro2018@gmail.com">
+                    <input id="email" name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Ex: bolsonaro2018@gmail.com">
                 </div>
 
                 <div class="form-group col-md-2">
@@ -129,12 +129,8 @@
 
                 <div class="form-group col-md-2">
                     <label for="cadeira">Cadeira</label>
-                    <select class="form-control" name="cadeira">
-                        <option>Cadeira</option>
-                        <c:forEach var="cadeira" items="${daoCadeira.cadeira}">
-                            <option value="${cadeira.idCadeira}">${cadeira.idCadeira}</option>
-                        </c:forEach>
-                    </select>
+                    <input name="cadeira" type="number" min="1" max="20" class="form-control" placeholder="Ex: 2">
+                    
                 </div>
 
                 <div class="form-check col-md-11">

@@ -11,16 +11,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ingressos</title>
+        <link rel="icon" type="image/png" sizes="96x96" href="imagens/favicon-96x96.png">
     </head>
     <body>
         <jsp:useBean id="daoSetor" class="br.com.leprechaun.dao.ControlSetor"/>
         <jsp:useBean id="daoSD" class="br.com.leprechaun.dao.ControlSD"/>
 
         <c:import url="cabecalho.jsp"/>
-        
+
         <div class="parallax-window" data-parallax="scroll" data-image-src="imagens/Estadio2.jpg" style="min-height: 500px" ></div>
-        
-        <div class="row" style="padding-top: 70px">
+
+        <div class="row" style="padding-top: 70px; padding-bottom: 20px">
             <div class="offset-md-1 col-md-8">
                 <h3>Dia de jogo</h3>
                 <p class="lead text-justify">
@@ -33,7 +34,6 @@
                     Taça Leprechaun.
                 <p class="lead text-justify"><b>Obs:</b> Em caso de empate, pode haver mais dias
                     de jogos!
-                </p>
                 </p>
                 <h3>Setores</h3>
                 <p class="lead text-justify">
@@ -66,6 +66,12 @@
                         </tbody>
                     </table>
                 </div>
+                <h3>Fileiras</h3>
+                <p class="lead text-justify">
+                    &nbsp;&nbsp;As fileiras de cada setor são enumeradas de <b>1</b> à 
+                    <b>25</b>, sendo a fileira <b>1</b> a mais próxima do gramado e a fileira <b>25</b> a mais longe.
+                </p>
+                <h3>Garanta já seu lugar e fique mais perto de seu ídolo!</h3>
             </div>
         </div>
         <c:import url="rodape.jsp"/>

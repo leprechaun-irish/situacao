@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="css/estilo.css"/>
     </head>
     <body>
-        <nav class="navbar navbar-full navbar-dark bg-inverse">
+        <footer class="navbar navbar-full navbar-dark bg-inverse">
             <div class="row flex-items-xs-middle">
                 <div class="col-sm-6 offset-md-4">
                     <h6 class="text-success font-italic">Copyright © 2016 Leprechaun - Todos os direitos reservados</h6>
@@ -25,6 +25,6 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </footer>
     </body>
 </html>

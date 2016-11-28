@@ -2,8 +2,6 @@ package br.com.leprechaun.dao;
 
 import br.com.leprechaun.connection.ConnectionFactory;
 import br.com.leprechaun.model.ModelCadeira;
-import br.com.leprechaun.model.ModelDia;
-import br.com.leprechaun.model.ModelFileira;
 import br.com.leprechaun.model.ModelLugar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -83,13 +81,7 @@ public class ControlCadeira {
             modelCadeira.setIdCadeira(rs.getInt("CAD_ID"));
             listCadeiraVazia.add(modelCadeira);
         }
-        for (ModelCadeira cad : listCadeiraVazia) {
-            for (ModelCadeira cadd : buscaCadeiraOcupada(dia, setor, fileira)) {
-                if (cad.getIdCadeira()==cadd.getIdCadeira()) {
-
-                }
-            }
-        }
+        listCadeiraVazia.removeAll(buscaCadeiraOcupada(dia, setor, fileira));
         return listCadeiraVazia;
     }
 }

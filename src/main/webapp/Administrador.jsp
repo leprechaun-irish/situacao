@@ -6,6 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Admin: Cadastra Setor</title>
+        <link rel="icon" type="image/png" sizes="96x96" href="imagens/favicon-96x96.png">
     </head>
     <body>
 
