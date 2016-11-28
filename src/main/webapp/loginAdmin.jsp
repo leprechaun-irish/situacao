@@ -7,7 +7,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
         <link rel="icon" type="image/png" sizes="96x96" href="imagens/favicon-96x96.png">
-        <style>
 
         <!--Livraria JQuery-->
         <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
@@ -17,14 +16,21 @@
 
         <!-- Bootstrap JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha256-j+XrvkQ4jJ99Hj0pJKPr6k0RCgxDDSTs3PBqLrX2EMc=" crossorigin="anonymous"></script>
+        
+         
+        <style>
+            ::-webkit-scrollbar{
+                display: none;
+            }
+        </style>
     </head>
     <body>
 
 
-        <div style="background-image: url(imagens/Estadio1.jpg); background-size: 100%; width: 100%; height: 100%; position: fixed;-webkit-filter: blur(4px);filter: blur(4px);">
+        <div style="background-image: url(imagens/Estadio1.jpg); background-size: 100%; width: 100%; height: 100%; position: fixed;-webkit-filter: blur(3px);">
         </div>
 
-        <div class="row" style="padding-top: 50px">
+        <div class="row" style="padding-top: 200px">
             <div class="col-md-3 offset-md-4">
                 <div class="card card-outline-success text-xs-center" style="background-color: white">
                     <div class="card-header">

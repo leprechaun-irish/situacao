@@ -103,10 +103,10 @@ header {
     color: #fff;
 }
 .paralax4 {
-    background: url(http://www.faceyspacey.com/images/article-images/netbeans-logo.jpg) 50% 0 no-repeat fixed;
+    background: url(https://netbeans.org/images_www/wallpapers/contributed-wallpaper-1.jpg) 50% 0 no-repeat fixed;
     margin: 0 auto;
     padding: 50px 0;
-    background-position: center center;
+    background-position: bottom;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

@@ -51,7 +51,7 @@
                         <a href="promocao.jsp"><button id="btnPromocao" class="btn btn-outline-success">Promoção</button></a>
                     </li>
                     <li class="nav nav-item">
-                        <a href="Slides.jsp"><button id="btnSlide" class="btn btn-outline-success">Sobre"Slides"</button></a>
+                        <a href="Slides.jsp"><button id="btnSlide" class="btn btn-outline-success">Sobre</button></a>
                     </li>
                     <li class="nav nav-item">
                         <a href="Administrador.jsp"><button id="btnGerenciar" class="btn btn-outline-success">Gerenciar</button></a>

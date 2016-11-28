@@ -258,7 +258,6 @@
             
             Total Arrecadado: R$ ${daoIngresso.totalArrecadado()}
             <br><br>
-            Setor mais lotado 2° dia: Azul com 25 lugares
         </div>
 
         <c:import url="rodape.jsp"/>
