@@ -61,9 +61,14 @@ public class ControlSetor {
         int x = 0;
         int y = 0;
         String sql
-                = "SELECT * FROM INGRESSO\n"
+                = "USE ESTADIO;\n"
+                + "SELECT LUG_SETOR, count(*)\n"
+                + "FROM INGRESSO\n"
                 + "INNER JOIN LUGAR ON ING_LUGAR = LUG_ID\n"
-                + "INNER JOIN SETOR_DIA ON LUG_SETOR = SD_SETOR AND LUG_DIA = SD_DIA;\n";
+                + "INNER JOIN SETOR_DIA ON LUG_SETOR = SD_SETOR AND LUG_DIA = SD_DIA\n"
+                + "INNER JOIN SETOR ON SD_SETOR = SET_DESCRICAO\n"
+                + "GROUP BY LUG_SETOR\n"
+                + "HAVING COUNT(*) > 1;";
         stmt = conn.prepareStatement(sql);
         rs = stmt.executeQuery();
         while (rs.next()) {
@@ -73,6 +78,6 @@ public class ControlSetor {
                 }
             }
         }
-        
+
     }
 }
