@@ -65,8 +65,8 @@ public class ServletCompra extends HttpServlet {
             modelSetor.setIdSetor(Integer.parseInt(setor));
             modelFileira.setIdFileira(Integer.parseInt(fileira));
             modelCadeira.setIdCadeira(Integer.parseInt(cadeira));
-            modelLugar.setCadeira(modelCadeira);
             
+            modelLugar.setCadeira(modelCadeira);
             modelLugar.setDia(modelDia);
             modelLugar.setFileira(modelFileira);
             modelLugar.setSetor(modelSetor);
