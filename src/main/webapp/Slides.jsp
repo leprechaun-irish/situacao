@@ -102,7 +102,7 @@
         <section class="fullwidth">
             <div class="paralax3" data-center="background-position: 50% 0px;" data-top-bottom="background-position: 50% -200px;" data-bottom-top="background-position: 50% 100px;">
                 <div class="paralaxtext" data-bottom-top="transform[bounce]:scale(0.5);" data-top="transform[bounce]:scale(1)">
-                    <h2 style="color:white">Banco de Dados </h2>
+                    <h2 style="color:black">Banco de Dados </h2>
                 </div>
             </div>
         </section>
@@ -121,7 +121,7 @@
         <section class="fullwidth">
             <div class="paralax4" data-center="background-position: 50% 0px;" data-top-bottom="background-position: 50% -200px;" data-bottom-top="background-position: 50% 100px;">
                 <div  class="paralaxtext" data-bottom-top="transform[bounce]:scale(0.5);" data-top="transform[bounce]:scale(1)">
-                    <h2 style="color:white">NetBeans </h2>
+                    <h2 style="color:black">NetBeans </h2>
                 </div>
             </div>
         </section>
@@ -145,7 +145,7 @@
     <section class="fullwidth">
         <div class="paralax5" data-center="background-position: 50% 0px;" data-top-bottom="background-position: 50% -200px;" data-bottom-top="background-position: 50% 100px;">
             <div class="paralaxtext" data-bottom-top="transform[bounce]:scale(0.5);" data-top="transform[bounce]:scale(1)">
-                <<h2 style="color:white">Github </h2>
+                <h2 style="color:black">Github </h2>
             </div>
         </div>
     </section>
@@ -168,7 +168,7 @@
     <section class="fullwidth">
         <div class="paralax6" data-center="background-position: 50% 0px;" data-top-bottom="background-position: 50% -200px;" data-bottom-top="background-position: 50% 100px;">
             <div class="paralaxtext" data-bottom-top="transform[bounce]:scale(0.5);" data-top="transform[bounce]:scale(1)">
-                <<h2 style="color:white">Maven </h2>
+                <<h2 style="color:black">Maven </h2>
             </div>
         </div>
     </section>
@@ -192,7 +192,7 @@
     <section class="fullwidth">
         <div class="paralax7" data-center="background-position: 50% 0px;" data-top-bottom="background-position: 50% -200px;" data-bottom-top="background-position: 50% 100px;">
             <div class="paralaxtext" data-bottom-top="transform[bounce]:scale(0.5);" data-top="transform[bounce]:scale(1)">
-                <<h2 style="color:white">Bootstrap </h2>
+                <h2 style="color:black">Bootstrap </h2>
             </div>
         </div>
     </section>
@@ -206,26 +206,6 @@
                     tipografia , formas, botões, navegação e outros componentes da interface
                     bem como opcionais JavaScript extensões. Ao contrário de muitos frameworks web, ele se preocupa
                     com o desenvolvimento front-end somente.
-                </p>
-            </blockquote>
-        </div>
-    </div>
-    <section class="fullwidth">
-        <div class="paralax8" data-center="background-position: 50% 0px;" data-top-bottom="background-position: 50% -200px;" data-bottom-top="background-position: 50% 100px;">
-            <div class="paralaxtext" data-bottom-top="transform[bounce]:scale(0.5);" data-top="transform[bounce]:scale(1)">
-                <<h2 style="color:white">jQuery </h2>
-            </div>
-        </div>
-    </section>
-    <div class="row" style="padding: 50px">
-        <div class="offset-md-1 col-md-8" style="padding-top: 50px">
-            <blockquote class="blockquote">
-                <h3>jQuery</h3>
-                <p class="lead text-justify">
-                    &nbsp;&nbsp;jQuery é uma biblioteca JavaScript cross-browser desenvolvida para simplificar
-                    os scripts client side que interagem com o HTML.Ela foi lançada em dezembro de 2006 no BarCamp
-                    de Nova York por John Resig. Usada por cerca de 77% dos 10 mil sites mais 
-                    visitados do mundo, jQuery é a mais popular das bibliotecas JavaScript.
                 </p>
             </blockquote>
         </div>
