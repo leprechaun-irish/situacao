@@ -142,6 +142,28 @@
             </blockquote>
         </div>
     </div>
+        <section class="fullwidth">
+            <div class="paralax8" data-center="background-position: 50% 0px;" data-top-bottom="background-position: 50% -200px;" data-bottom-top="background-position: 50% 100px;">
+                <div  class="paralaxtext" data-bottom-top="transform[bounce]:scale(0.5);" data-top="transform[bounce]:scale(1)">
+                    <h2 style="color:black">GlassFish </h2>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="row" style="padding: 50px">
+        <div class="offset-md-1 col-md-8" style="padding-top: 50px">
+            <blockquote class="blockquote">
+                <h3>GlassFish</h3>
+                <p class="lead text-justify">
+                    &nbsp;&nbsp;GlassFish é um servidor de aplicação open source 
+                    liderado pela Sun Microsystems para a plataforma J2EE. Sua versão proprietária é chamada
+                    Sun GlassFish Enterprise Server. GlassFish é software livre, sendo duplamente licenciado 
+                    sob duas licenças de software livre: Common Development and Distribution License (CDDL) e GNU
+                    General Public License (GPL) alterada exceção para classpath.
+                </p>
+            </blockquote>
+        </div>
+    </div>
     <section class="fullwidth">
         <div class="paralax5" data-center="background-position: 50% 0px;" data-top-bottom="background-position: 50% -200px;" data-bottom-top="background-position: 50% 100px;">
             <div class="paralaxtext" data-bottom-top="transform[bounce]:scale(0.5);" data-top="transform[bounce]:scale(1)">
