@@ -52,7 +52,7 @@ public class InsereRegistros {
         
         stmt.setInt(1, 1);
         stmt.setInt(2, 2);
-        stmt.setDouble(3, 50);
+        stmt.setDouble(3, 30);
         stmt.execute();
         
         stmt.setInt(1, 2);
@@ -62,27 +62,27 @@ public class InsereRegistros {
         
         stmt.setInt(1, 2);
         stmt.setInt(2, 2);
-        stmt.setDouble(3, 50);
+        stmt.setDouble(3, 30);
         stmt.execute();
         
         stmt.setInt(1, 3);
         stmt.setInt(2, 1);
-        stmt.setDouble(3, 50);
+        stmt.setDouble(3, 45);
         stmt.execute();
         
         stmt.setInt(1, 3);
         stmt.setInt(2, 2);
-        stmt.setDouble(3, 100);
-        stmt.execute();
-        
-        stmt.setInt(1, 4);
-        stmt.setInt(2, 1);
         stmt.setDouble(3, 50);
         stmt.execute();
         
         stmt.setInt(1, 4);
+        stmt.setInt(2, 1);
+        stmt.setDouble(3, 45);
+        stmt.execute();
+        
+        stmt.setInt(1, 4);
         stmt.setInt(2, 2);
-        stmt.setDouble(3, 100);
+        stmt.setDouble(3, 50);
         stmt.execute();
     }
 }

@@ -132,4 +132,11 @@ public class ControlIngresso {
         String sql = "";
     }
     
+    public void removeIngresso(int ingresso) throws SQLException{
+        String sql = "DELETE FROM INGRESSO WHERE ING_ID=?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, ingresso);
+        stmt.execute();
+    }
+    
 }

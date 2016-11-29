@@ -78,7 +78,7 @@ public class ControlSD {
 
     public double buscaPreco(int dia, int setor){
         try {
-            String sql = "SELECT SETOR_DIA.SD_PRECO FROM INGRESSO INNER JOIN SETOR_DIA ON SETOR_DIA.SD_DIA=? AND SETOR_DIA.SD_SETOR=? LIMIT 1";
+            String sql = "SELECT SETOR_DIA.SD_PRECO FROM SETOR_DIA INNER JOIN DIA ON SETOR_DIA.SD_DIA=? INNER JOIN SETOR ON SETOR_DIA.SD_SETOR=? LIMIT 1";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, dia);
             stmt.setInt(2, setor);

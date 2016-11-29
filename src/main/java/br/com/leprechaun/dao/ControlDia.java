@@ -44,19 +44,6 @@ public class ControlDia {
             stmt.setInt(1, modelDia.getIdDia());
             stmt.execute();
             stmt.close();
-            sql = "DELETE FROM DIA WHERE DIA_ID=?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, modelDia.getIdDia());
-            stmt.execute();
-            stmt.close();
-
-            sql = "";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, modelDia.getIdDia());
-            stmt.execute();
-            stmt.close();
-
-            System.out.println("Chegou");
         } catch (SQLException ex) {
             System.out.println("Erro bem loko" + ex);
         }

@@ -2,6 +2,7 @@
 <%@page import="br.com.leprechaun.dao.ControlIngresso"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -266,7 +267,7 @@
                         </a>
                         <div id="collapseFor" class="collapse" role="tabpanel" aria-labelledby="headingFor">
                             <div class=" table-responsive">
-                                <form name="formListaFileira" method="get" action="ServletAdministrador">
+                                <form name="formListaIngresso" method="get" action="ServletAdministrador">
                                     <table class="table table-sm  table-hover table-inverse">
                                         <thead>
                                             <tr>
@@ -277,12 +278,13 @@
                                                 <th>Fileria</th>
                                                 <th>Cadeira</th>
                                                 <th>Preço</th>
+                                                <th>Data</th>
                                                 <th>Excluir</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <input type="hidden" name="acao" id="acao" value="removeFileira">
-                                        <input type="hidden" name="itemFileira" id="itemFileira" value="">
+                                        <input type="hidden" name="acao" id="acao" value="removeIngresso">
+                                        <input type="hidden" name="idIngresso" id="idIngresso" value="">
                                         <c:forEach var="ing" items="${daoIngresso.ingresso}">
                                             <tr>
                                                 <td>${ing.idIngresso}</td>
@@ -292,9 +294,9 @@
                                                 <td>${ing.lugar.fileira.idFileira}</td>
                                                 <td>${ing.lugar.cadeira.idCadeira}</td>
                                                 <td>${ing.preco}</td>
-                                                <td><span class="fa fa-remove" onclick="document.getElementById('itemSD').value = '${sd.idSD}';
-                                                        document.getElementById('itemSetor').value = '${sd.setor.idSetor}';
-                                                        javascript:formListaSetor.submit()"></span></td>
+                                                <td><fmt:formatDate value="${ing.data}" pattern="dd/MM/yyyy" /></td>
+                                                <td><span class="fa fa-remove" onclick="document.getElementById('idIngresso').value = '${ing.idIngresso}';
+                                                        javascript:formListaIngresso.submit()"></span></td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>

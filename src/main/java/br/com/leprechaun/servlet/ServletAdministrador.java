@@ -2,6 +2,7 @@ package br.com.leprechaun.servlet;
 
 import br.com.leprechaun.dao.ControlDia;
 import br.com.leprechaun.dao.ControlFileira;
+import br.com.leprechaun.dao.ControlIngresso;
 import br.com.leprechaun.dao.ControlSD;
 import br.com.leprechaun.dao.ControlSetor;
 import br.com.leprechaun.model.ModelDia;
@@ -10,6 +11,8 @@ import br.com.leprechaun.model.ModelSD;
 import br.com.leprechaun.model.ModelSetor;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -109,8 +112,14 @@ public class ServletAdministrador extends HttpServlet {
             rd.forward(request, response);
         }
         
-        if("removeFileira".equals(acao)){
-            
+        if("removeIngresso".equals(acao)){
+            try {
+                ControlIngresso ctrlIngresso = new ControlIngresso();
+                int idIngresso = Integer.parseInt(request.getParameter("idFileira"));
+                ctrlIngresso.removeIngresso(idIngresso);
+            } catch (SQLException ex) {
+                System.out.println("Erro ao remover ingresso!\n"+ex);
+            }
         }
     }
 }
