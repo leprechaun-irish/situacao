@@ -12,7 +12,7 @@ public class ConnectionFactory {
             Class.forName("com.mysql.jdbc.Driver");
             String user = "root";
             String pass = "123456";
-            String host = "192.68.0.60";
+            String host = "localhost";
             String port = "3306";
             String db = "estadio";
             String url = "jdbc:mysql://"+host+":"+port+"/"+db;
