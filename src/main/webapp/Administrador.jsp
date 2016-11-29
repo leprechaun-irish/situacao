@@ -25,6 +25,7 @@
         <jsp:useBean id="daoFileira" class="br.com.leprechaun.dao.ControlFileira"/>
         <jsp:useBean id="daoIngresso" class="br.com.leprechaun.dao.ControlIngresso"/>
 
+        <fmt:setLocale value="pt-BR"/>
         <c:import url="cabecalho.jsp"/>
 
         <div style="padding-top: 70px; padding-bottom: 15px">
@@ -165,7 +166,7 @@
                                                 <td>${sd.idSD}</td>
                                                 <td>${sd.setor.descricao}</td>
                                                 <td>${sd.dia.idDia}</td>
-                                                <td>${sd.preco}</td>
+                                                <td><fmt:formatNumber value="${sd.preco}" minFractionDigits="2"  type="currency"/></td>
                                                 <td><span class="fa fa-remove" onclick="document.getElementById('itemSD').value = '${sd.idSD}';
                                                         document.getElementById('itemSetor').value = '${sd.setor.idSetor}';
                                                         javascript:formListaSetor.submit()"></span></td>
@@ -255,7 +256,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="card">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFor" aria-expanded="true" aria-controls="collapseFor">
                             <div class="btn-group" role="group">
@@ -293,7 +294,7 @@
                                                 <td>${ing.lugar.setor.descricao}</td>
                                                 <td>${ing.lugar.fileira.idFileira}</td>
                                                 <td>${ing.lugar.cadeira.idCadeira}</td>
-                                                <td>${ing.preco}</td>
+                                                <td><fmt:formatNumber value="${ing.preco}" minFractionDigits="2"  type="currency"/></td>
                                                 <td><fmt:formatDate value="${ing.data}" pattern="dd/MM/yyyy" /></td>
                                                 <td><span class="fa fa-remove" onclick="document.getElementById('idIngresso').value = '${ing.idIngresso}';
                                                         javascript:formListaIngresso.submit()"></span></td>
@@ -305,63 +306,62 @@
                             </div>
                         </div>
                     </div>
-                    
+
+
+
+                    <br><br>
+                    <h2 style="text-align: center"> Total Arrecadado: <fmt:formatNumber value="${daoIngresso.totalArrecadado()}" minFractionDigits="2"  type="currency"/></h2>
+                    <br><br>
+
+                    <div class=" table-responsive">
+                        <h5>Setor mais lotado do segundo dia</h5>
+                        <table class="table table-sm table-hover table-inverse">
+                            <thead>
+                                <tr>
+                                    <td>Setor</td>
+                                    <td>Qtde Ingressos Vendidos</td>
+                                    <td>Valor arrecadado</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="setor" items="${daoSetor.setor}">
+                                    <tr>
+                                        <td>${setor.descricao}</td>
+                                        <td>${daoSetor.setorMaisLotado(setor.idSetor, 2, "qtdeIngresso")}</td>
+                                        <td><fmt:formatNumber value="${daoSetor.setorMaisLotado(setor.idSetor, 2, null)}" minFractionDigits="2"  type="currency"/></td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+
+                    <div class=" table-responsive">
+                        <h5>Dia com maior lucro</h5>
+                        <table class="table table-sm table-hover table-inverse">
+                            <thead>
+                                <tr>
+                                    <td>Dia</td>
+                                    <td>Qtde Ingressos Vendidos</td>
+                                    <td>Valor arrecadado</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="dia" items="${daoDia.dia}">
+                                    <tr>
+                                        <td>${dia.idDia}</td>
+                                        <td>${daoDia.contaTotalDia(dia.idDia, "valorTotal")}</td>
+                                        <td><fmt:formatNumber value="${daoDia.contaTotalDia(dia.idDia, null)}" minFractionDigits="2"  type="currency"/></td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+
                 </div>
             </div>
-
-            <div style="text-align: center"> Total Arrecadado: R$ ${daoIngresso.totalArrecadado()}</div>
-            <br><br>
-
-            <table border="1px" style="margin: 0 auto">
-                <tr>
-                    <td colspan="3">
-                        Setor mais lotado 
-
-                        <select>
-                            <c:forEach var="dia" items="${daoDia.dia}">
-                                <option id="d${dia.idDia}">${dia.idDia}° Dia</option>
-                            </c:forEach>
-                        </select>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>Setor</td>
-                    <td>Qtde Ingressos Vendidos</td>
-                    <td>Valor arrecadado</td>
-                </tr>
-
-                <c:forEach var="setor" items="${daoSetor.setor}">
-                    <tr>
-                        <td>${setor.descricao}</td>
-                        <td>${daoSetor.setorMaisLotado(setor.idSetor, 2, "qtdeIngresso")}</td>
-                        <td>R$ ${daoSetor.setorMaisLotado(setor.idSetor, 2, null)}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-
-            <br><br>
-
-            <table border="1px" style="margin: 0 auto">
-                <tr>
-                    <td colspan="3">Dia com mais lucro</td>
-                </tr>
-                <tr>
-                    <td>Dia</td>
-                    <td>Qtde Ingressos Vendidos</td>
-                    <td>Valor arrecadado</td>
-                </tr>
-
-                <c:forEach var="dia" items="${daoDia.dia}">
-                    <tr>
-                        <td>${dia.idDia}</td>
-                        <td>${daoDia.contaTotalDia(dia.idDia, "valorTotal")}</td>
-                        <td>R$ ${daoDia.contaTotalDia(dia.idDia, null)}</td>
-                    </tr>
-                </c:forEach>
-            </table>
         </div>
-
         <c:import url="rodape.jsp"/>
     </body>
 </html>
